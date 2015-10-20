@@ -7,6 +7,7 @@ import com.rozetka.utils.AbstractContainer;
 import net.serenitybdd.core.pages.PageObject;
 
 public class SearchPane extends AbstractContainer {
+	
 	//Locators
 	private final By searchBox = By.cssSelector("input[name=text]");
 	private final By searchBtn = By.cssSelector("button[name=search-button]");

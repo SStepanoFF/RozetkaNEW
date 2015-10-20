@@ -31,7 +31,7 @@ public class SearchResultPage extends SearchPane {
 		List<WebElementFacade> elements = getAllElementsBy(By.xpath("//div[@class=\'g-i-list-title\']/a"));
 		for(WebElementFacade e: elements){
 			for(String param: parametr ){
-				if(!getAttributeOfWebElement(e, "innerHTML").toString().contains(param)){
+				if(!getAttributeOfWebElement(e, "innerHTML").toString().toLowerCase().contains(param.toLowerCase())){
 					find=false;
 					break;
 				}

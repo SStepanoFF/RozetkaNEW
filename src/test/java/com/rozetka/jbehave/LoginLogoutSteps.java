@@ -4,14 +4,14 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import com.rozetka.steps.LoginLogoutSteps;
+import com.rozetka.steps.UserLoginLogoutSteps;
 
 import net.thucydides.core.annotations.Steps;
 
-public class Login_LogoutSteps{
+public class LoginLogoutSteps{
 	 
 	@Steps
-    LoginLogoutSteps loginLogoutSteps;
+    UserLoginLogoutSteps loginLogoutSteps;
 	
 	 @Given("the user opens rozetka")
 	    public void givenTheUserOpensRozetkaStrore(){

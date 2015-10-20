@@ -17,4 +17,4 @@ Given the user is logged in
 When the user clicks logOut btn
 Then the sign link should be displayed
 
-ROMA ROMA ROMA
+ROMA ROMA ROMA256

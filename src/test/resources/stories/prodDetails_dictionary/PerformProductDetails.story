@@ -1,4 +1,5 @@
 Product Details story
+
 Narrative:
 In order to view product details
 As a user
@@ -8,8 +9,8 @@ Scenario:  add comment for MacBook notepad with 13"
 Given the user opens a product details page
 And product is 'Ноутбук' with '13"'
 When the user 'Sergii' with email 'tester2@test.com' add text 'test comment' to the comment field
-Then comment is added to product
-					 
+Then the comment is added
+
 Scenario:  add product to the wishlist
 Given wishlist btn is available
 When the user clicks on Add to Wishlist btn

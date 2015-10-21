@@ -13,7 +13,8 @@ public class TheProductDetailsSteps{
 	
 	@Given("the user opens a product details page")
 	public void givenTheUserOpensAProductDetailsPage(){
-		 userSteps.openProductDetailsPage();
+		userSteps.opens_rozetka_store();
+		userSteps.openProductDetailsPage();
 	}
 	
 	@Given("product is '$notebook' with '$size'")
@@ -26,8 +27,8 @@ public class TheProductDetailsSteps{
 		 userSteps.addCommentForProduct(name, email, text);
 	}
 	
-	@Then("comment is added to product")
-	public void thenCommentIsAddedToProduct(){
+	@Then("the comment is added")
+	public void thenCommentIsAddedToProducts(){
 		 userSteps.addedCommentVerification();
 	}
 	

@@ -15,7 +15,7 @@ public class UserProductDetailsSteps extends ScenarioSteps {
 	
 	@Step
 	public void openProductDetailsPage(){
-		productDetailsPage.openPDP();
+		productDetailsPage.openProdDetailsPage();
 	}
 	
 	@Step

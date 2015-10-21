@@ -113,7 +113,7 @@ public class EndUserSteps extends ScenarioSteps {
 	
 	@Step
 	public void openProductDetailsPage(){
-		productDetailsPage.open();
+		productDetailsPage.openProdDetailsPage();
 	}
 	
 	@Step

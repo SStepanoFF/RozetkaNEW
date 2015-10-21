@@ -22,6 +22,11 @@ public class ProductDetailsPage extends SearchPane {
 	private final String addedCommentText="p[class='pp-comments-i-text']";
 	private final String addedCommentName="div[class='pp-comments-author-name']";
 	
+	public void openProdDetailsPage(){
+		open();
+		waitForPageToLoad();
+	}
+	
 	public String getProductTitle(){
 		return getElementBy(productTitle).getText().toLowerCase();
 	}
@@ -66,8 +71,5 @@ public class ProductDetailsPage extends SearchPane {
 		return added;
 	}
 	
-	public void openPDP(){
-		open();
-	}
 
 }

@@ -23,7 +23,7 @@ public class SearchResultPage extends SearchPane {
 	}
 	
 	public void purchaseItem(String itemName){
-			clickWebElement(findElementAtListByParametr(itemName).findElement(By.xpath(purchaseItemBtn)));
+		clickWebElement(getChildOfElementFacade(findElementAtListByParametr(itemName), By.xpath(purchaseItemBtn)));
 	}
 	
 	private WebElementFacade findElementAtListByParametr(String... parametr){

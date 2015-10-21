@@ -12,7 +12,10 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("http://rozetka.com.ua")
 public class MainPage extends SearchPane {
 	
-	public void opens(){
+	private final String baseUrl = "http://rozetka.com.ua";
+	
+	public void openMainPage(){
 		open();
+		waitForPageToLoad();
 	}
 }

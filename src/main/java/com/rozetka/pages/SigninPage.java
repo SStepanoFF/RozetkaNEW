@@ -1,14 +1,27 @@
-package com.rozetka.modules;
+package com.rozetka.pages;
 
 import org.openqa.selenium.By;
 
 import com.rozetka.utils.AbstractContainer;
 
-public class SigninModule extends AbstractContainer {
+import net.thucydides.core.annotations.DefaultUrl;
+
+@DefaultUrl("https://my.rozetka.com.ua/signin/")
+public class SigninPage extends AbstractContainer {
 	private final By userNameField = By.cssSelector("input[name=login]");
 	private final By passwordField = By.cssSelector("input[name=password]");
-	private final By submitBtn = By.cssSelector("button[name=auth_submit]");
-	private final By title = By.cssSelector("h5.auth-title");
+	private final By submitBtn = By.cssSelector("button[type=submit]");
+	
+//	
+//	@Override
+//	public String getBaseUrl(){
+//		return null;
+//	}
+//	
+//	@Override
+//	public By getUniqueElement(){
+//		return submitBtn;
+//	}
 	
 	public void enterUserName(String userName){
 		enterValueInTo(userNameField, userName);
@@ -22,12 +35,8 @@ public class SigninModule extends AbstractContainer {
 		clickElementBy(submitBtn);
 	}
 	
-	public boolean isUniqueElementPresent(){
-		if(getElementBy(title)!=null){
-		return getElementBy(title).isDisplayed();
-		}
-		else return false;
+	public void openSigninPage(){
+		open();
 	}
-
-
+	
 }

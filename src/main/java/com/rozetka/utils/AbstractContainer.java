@@ -3,31 +3,75 @@ package com.rozetka.utils;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.thoughtworks.selenium.webdriven.commands.IsAlertPresent;
+import com.thoughtworks.selenium.Wait;
 
+import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 
-public class AbstractContainer extends PageObject {
+
+public abstract class AbstractContainer extends PageObject{
+	
+	//protected static WebDriver driver = RWebDriver.getInstance().getWebDriver();
+    //protected WebDriverWait wait=new WebDriverWait(driver,30);
 	
 
-	protected WebElement getElementBy(By by){
+   // public abstract String getBaseUrl();
+   // public abstract By getUniqueElement();
+    
+    
+    protected void navigateToUrl(String url){
+    	getDriver().navigate().to(url);
+    }
+    
+    protected void waitForPageToLoad()
+    {
+        ExpectedCondition<Boolean> expectation = new
+                ExpectedCondition<Boolean>()
+                {
+                    public Boolean apply(WebDriver driver)
+                    {
+                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+        org.openqa.selenium.support.ui.Wait<WebDriver> wait = new WebDriverWait(getDriver(),30);
+        try {
+            wait.until(expectation);
+        } catch (org.openqa.selenium.TimeoutException e){
+        	assertThat("Page has not been loaded within 30 seconds", false);
+        }
+    }
+    
+    protected WebElementFacade getChildOfElementFacade(WebElementFacade elementFacade, By childBy) throws NullPointerException{
+    	WebElementFacade element = elementFacade.findBy(childBy);
+    	if(element.isVisible()){
+    		return element;
+    	}else{
+    	assertThat("The child element: "+childBy.toString()+" of element: "+elementFacade.toString()+"is not visible", false);
+    	return null;
+    	}
+    }
+    
+	protected WebElementFacade getElementBy(By by){
 		List<WebElementFacade> elements = getAllElementsBy(by);
-        for (WebElement e : elements) {
+        for (WebElementFacade e : elements) {
             if (e.isDisplayed() && e.isEnabled()) {
                 return e;
             }
         }
         return null;
-	}
-
+	}	
+	
 	protected void clickElementBy(By by){
 		
 		try{
@@ -37,17 +81,19 @@ public class AbstractContainer extends PageObject {
 		}
 	}
 	
-	protected void clickWebElement(WebElement element) {
+	protected void clickWebElement(WebElementFacade element) {
         element.click();
-        //closeAlert();
+        closeAlert();
 	}
 	
-	protected WebElement getParent(By by) {
-        return getElementBy(by).findElement(By.xpath(".."));
+	protected WebElementFacade getParent(By by) {
+		return getElementBy(by).find(By.xpath(".."));
+        //return getElementBy(by).findElement(By.xpath(".."));
     }
 	
 	protected List<WebElementFacade> getAllElementsBy(By by){
 		return findAll(by);
+		//return driver.findElements(by);
 	}
 	
 	protected void enterValueInTo(By by, String value){
@@ -74,7 +120,7 @@ public class AbstractContainer extends PageObject {
         }
     }
 	
-    protected WebElement findElementByAttributeValue(By by, String attribute, String value) {
+    protected WebElementFacade findElementByAttributeValue(By by, String attribute, String value) {
         for (WebElementFacade element : getAllElementsBy(by)) {
             if (element.getAttribute(attribute).contains(value)) {
                 return element;
@@ -101,13 +147,13 @@ public class AbstractContainer extends PageObject {
         }
     }
 	
-	protected boolean ContainsElementBy(By by){
+	protected boolean containsElementBy(By by){
 		return !getAllElementsBy(by).isEmpty();
 	}
 	
 	protected void closeAlert() {
         try {
-            System.out.println("Sytem shows the following message on the alert:\n" + getAlert().getText().toString());
+            System.out.println("Sytem shows the following message on the alert:\n" + getAlert().getText());
             getAlert().accept();
         } catch (NoAlertPresentException ex) {
         } 

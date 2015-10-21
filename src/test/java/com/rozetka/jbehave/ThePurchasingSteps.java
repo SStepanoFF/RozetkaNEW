@@ -2,17 +2,22 @@ package com.rozetka.jbehave;
 
 import net.thucydides.core.annotations.Steps;
 
+import org.jbehave.core.annotations.AfterScenario;
+import org.jbehave.core.annotations.AfterStory;
+import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import com.rozetka.steps.EndUserSteps;
+import com.rozetka.utils.RWebDriver;
 
-public class PurchasingSteps {
+public class ThePurchasingSteps {
 
     @Steps
     EndUserSteps endUser;
-    
+
     ///
     @Given("the user opens rozetka store")
     public void givenTheUserOpensRozetkaStrore(){

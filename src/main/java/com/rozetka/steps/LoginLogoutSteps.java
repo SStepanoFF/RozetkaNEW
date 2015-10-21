@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.rozetka.modules.SigninModule;
 import com.rozetka.pages.MainPage;
+import com.rozetka.pages.ProductDetailsPage;
 import com.rozetka.panels.SearchPane;
 
 import net.thucydides.core.annotations.Step;
@@ -22,7 +23,7 @@ public class LoginLogoutSteps extends ScenarioSteps{
 	
 	@Step
 	public void openSigninModule(){
-		searchPane.openSigninModule();
+//		searchPane.openSigninModule();
 	}
 	
 	@Step
@@ -58,6 +59,34 @@ public class LoginLogoutSteps extends ScenarioSteps{
 	@Step
 	public void verifyThatUserIsNOTLogin(){
 		assertThat("User is logged in", searchPane.isSigninLinkPresent());
+	}
+	
+ProductDetailsPage productDetailsPage;
+	
+	String userName;
+	String commentText;
+	
+	@Step
+	public void openProductDetailsPage(){
+		productDetailsPage.openPDP();
+	}
+	
+	@Step
+	public void verifyProductHasParameters(String... parameters){
+		assertThat("Product doesn't contains such parameters", productDetailsPage.isProductHaveParametrs(parameters));
+	}
+	
+	@Step
+	public void addCommentForProduct(String name, String email, String text) {
+		this.userName=name;
+		this.commentText=text;
+		productDetailsPage.addComment(name, email, text);
+		
+	}
+	
+	@Step
+	public void addedCommentVerification(){
+		assertThat("Comment was not added",productDetailsPage.isCommentAdded(this.commentText, this.userName));
 	}
 
 }

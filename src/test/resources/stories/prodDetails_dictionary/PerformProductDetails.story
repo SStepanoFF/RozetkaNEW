@@ -1,5 +1,4 @@
 Product Details story
-
 Narrative:
 In order to view product details
 As a user
@@ -8,7 +7,7 @@ I want to open product details page, make comments and add product to the wishli
 Scenario:  add comment for MacBook notepad with 13"
 Given the user opens a product details page
 And product is 'Ноутбук' with '13"'
-When the user add 'test comment' to the comment field
+When the user 'Sergii' with email 'tester2@test.com' add text 'test comment' to the comment field
 Then comment is added to product
 					 
 Scenario:  add product to the wishlist

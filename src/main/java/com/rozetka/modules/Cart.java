@@ -16,6 +16,6 @@ public class Cart extends AbstractContainer {
 	}
 	
 	public boolean itemExists(String itemName){
-		return ContainsElementBy(goodsLink.linkText(itemName));
+		return containsElementBy(goodsLink.linkText(itemName));
 	}
 }

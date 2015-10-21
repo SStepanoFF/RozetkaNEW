@@ -1,13 +1,15 @@
 package com.rozetka.jbehave;
 import org.jbehave.core.annotations.*;
 
+import com.rozetka.steps.EndUserSteps;
 import com.rozetka.steps.UserProductDetailsSteps;
 
 import net.thucydides.core.annotations.Steps;
-public class ProductDetailsSteps{
+public class TheProductDetailsSteps{
 	
 	@Steps
-	UserProductDetailsSteps userSteps;
+	EndUserSteps userSteps;
+	
 	
 	@Given("the user opens a product details page")
 	public void givenTheUserOpensAProductDetailsPage(){
@@ -19,16 +21,14 @@ public class ProductDetailsSteps{
 		 userSteps.verifyProductHasParameters(notebook, size);
 	}
 	
-	@When("the user add '$test comment' to the comment field")
-	@Pending
-	public void whenTheUserAddtestCommentToTheCommentField(){
-		 //TODO 
+	@When("the user '$name' with email '$email' add text '$text' to the comment field")
+	public void whenTheUserAddtestCommentToTheCommentField(String name,String email,String text){
+		 userSteps.addCommentForProduct(name, email, text);
 	}
 	
 	@Then("comment is added to product")
-	@Pending
-	public void thenCommentIsAdded(){
-		 //TODO 
+	public void thenCommentIsAddedToProduct(){
+		 userSteps.addedCommentVerification();
 	}
 	
 	

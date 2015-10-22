@@ -16,7 +16,7 @@ public class UserSearchResultPageSteps extends ScenarioSteps {
 	
 	@Step
 	public void purchaseTheItem(){
-		searchResultPage.buyItem(Variables.searchTerm);
+		searchResultPage.buyItem(getVariables().searchTerm);
 	}
 
 }

@@ -7,6 +7,8 @@ import com.rozetka.steps.Variables.Variables;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import static com.rozetka.steps.Variables.Variables.getVariables;
+
 public class UserSearchPaneSteps extends ScenarioSteps{
 	
 	MainPage mainPage;
@@ -14,7 +16,7 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	
 	@Step
 	public void lookFor(String searchTerm){
-		Variables.searchTerm=searchTerm;
+		getVariables().searchTerm=searchTerm;
 		mainPage.enterInToSearchBox(searchTerm);
 		mainPage.clickSearch();
 	}

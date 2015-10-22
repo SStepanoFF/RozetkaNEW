@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class UserProductDetailsSteps extends ScenarioSteps {
+public class UserProductDetailsPageSteps extends ScenarioSteps {
 	
 	ProductDetailsPage productDetailsPage;
 	
@@ -45,6 +45,13 @@ public class UserProductDetailsSteps extends ScenarioSteps {
 	public void addToWishlist(){
 		productDetailsPage.addToWishlist();
 	}
+	
+	@Step
+	public void verifyWishIsAddedOnProductPage(){
+		assertThat("Product is not added to wishlist",productDetailsPage.isProductAddedToWishlist());
+	}
+	
+	
 
 	
 

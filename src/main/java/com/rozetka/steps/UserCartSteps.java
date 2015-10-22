@@ -8,6 +8,8 @@ import com.rozetka.steps.Variables.Variables;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import static com.rozetka.steps.Variables.Variables.getVariables;
+
 public class UserCartSteps extends ScenarioSteps {
 	
 	Cart cart;
@@ -20,7 +22,7 @@ public class UserCartSteps extends ScenarioSteps {
 	
 	@Step
 	public void checkForItemInTheCart(){
-		assertThat("The "+Variables.searchTerm.toString()+" does not exist in the cart", cart.itemExists(Variables.searchTerm));
+		assertThat("The "+getVariables().searchTerm.toString()+" does not exist in the cart", cart.itemExists(getVariables().searchTerm));
 	}
 	
 	@Step

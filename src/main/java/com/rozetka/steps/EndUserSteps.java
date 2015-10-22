@@ -35,8 +35,6 @@ public class EndUserSteps extends ScenarioSteps {
 		mainPage.openMainPage();
 	}
 	
-	public void tearDown(){
-	}
 	
 	@Step
 	public void lookFor(String searchTerm){

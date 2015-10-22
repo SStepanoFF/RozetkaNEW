@@ -199,8 +199,16 @@ public abstract class AbstractContainer extends PageObject{
         }
     }
 	
+	protected String getVisibleText(WebElementFacade element){
+		return element.getText();
+	}
+	
 	protected boolean containsElementBy(By by){
 		return !getAllElementsBy(by).isEmpty();
+	}
+	
+	protected boolean isElementVisible(WebElementFacade elementFacade){
+		return elementFacade.isVisible();
 	}
 	
 	protected void closeAlert() {

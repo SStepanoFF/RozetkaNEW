@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-
+@Deprecated
 public class EndUserSteps extends ScenarioSteps {
 
 	MainPage mainPage;

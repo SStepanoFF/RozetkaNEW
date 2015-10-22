@@ -9,6 +9,7 @@ import com.rozetka.pages.SearchResultPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+@Deprecated
 public class UserPurchasingSteps extends ScenarioSteps {
 	
 	SearchResultPage searchResultPage;

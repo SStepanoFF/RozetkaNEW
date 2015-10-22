@@ -35,6 +35,16 @@ public class UserProductDetailsSteps extends ScenarioSteps {
 	public void addedCommentVerification(){
 		assertThat("Comment was not added",productDetailsPage.isCommentAdded(this.commentText, this.userName));
 	}
+	
+	@Step
+	public void verificationAddToWishlistBtnIsDisplayed(){
+		assertThat("Wishlist btn does not display", productDetailsPage.isWishlistBtnAvailable());
+	}
+	
+	@Step
+	public void addToWishlist(){
+		productDetailsPage.addToWishlist();
+	}
 
 	
 

@@ -10,7 +10,7 @@ import com.rozetka.panels.SearchPane;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-public class LoginLogoutSteps extends ScenarioSteps{
+public class UserLoginLogoutModuleSteps extends ScenarioSteps{
 	
 	MainPage mainPage;
 	SearchPane searchPane;
@@ -23,7 +23,7 @@ public class LoginLogoutSteps extends ScenarioSteps{
 	
 	@Step
 	public void openSigninModule(){
-//		searchPane.openSigninModule();
+		searchPane.openSigninModule();
 	}
 	
 	@Step

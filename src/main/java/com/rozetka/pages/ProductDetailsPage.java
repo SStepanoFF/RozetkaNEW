@@ -18,9 +18,12 @@ public class ProductDetailsPage extends SearchPane {
 	private final By commentEmailField= By.cssSelector("input[name='email']");
 	private final By commentSubmitBtn= By.id("detail-tab-reviews-add-submit");
 	
+	private final By commentVerifyMessage=By.xpath("//div[@name='app-message']//div");
 	private final By addedCommentsList= By.cssSelector("div[name='comment_vote']");
 	private final String addedCommentText="p[class='pp-comments-i-text']";
 	private final String addedCommentName="div[class='pp-comments-author-name']";
+	
+	private final By addToWishlistBtn=By.xpath("//div[@name='wishlists']/a");
 	
 	public void openProdDetailsPage(){
 		open();
@@ -61,14 +64,24 @@ public class ProductDetailsPage extends SearchPane {
 	}
 	
 	public boolean isCommentAdded(String text, String name){
-		boolean added=false;
-		for (WebElementFacade el:getAllElementsBy(addedCommentsList)){
-			if (el.findElement(By.cssSelector(addedCommentName)).getText().toLowerCase().contains(name.toLowerCase()) &&
-					el.findElement(By.cssSelector(addedCommentText)).getText().toLowerCase().contains(text.toLowerCase())){
-				added=true;
-			}
-		}
-		return added;
+//		boolean added=false;
+//		for (WebElementFacade el:getAllElementsBy(addedCommentsList)){
+//			if (el.findElement(By.cssSelector(addedCommentName)).getText().toLowerCase().contains(name.toLowerCase()) &&
+//					el.findElement(By.cssSelector(addedCommentText)).getText().toLowerCase().contains(text.toLowerCase())){
+//				added=true;
+//			}
+//		}
+//		return added;
+		
+		return containsElementBy(commentVerifyMessage) && getElementBy(commentVerifyMessage).isEnabled();
+	}
+	
+	public boolean isWishlistBtnAvailable(){
+		return isElementVisible(addToWishlistBtn);
+	}
+	
+	public void addToWishlist(){
+		clickElementBy(addToWishlistBtn);
 	}
 	
 

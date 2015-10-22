@@ -13,5 +13,6 @@ Then the comment is added
 
 Scenario:  add product to the wishlist
 Given wishlist btn is available
+And the user 'sergiistepanov85@gmail.com' with password 'sergii123' login to rozetka store
 When the user clicks on Add to Wishlist btn
 Then product is added to wishlist

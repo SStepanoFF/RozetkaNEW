@@ -30,9 +30,9 @@ public class SearchPane extends AbstractContainer {
 		clickElementBy(cartBtn);
 	}
 
-//	public void openSigninModule(){
-//		clickElementBy(signinLink);
-//	}
+	public void openSigninModule(){
+		clickElementBy(signinLink);
+	}
 	
 	public boolean isProfileLinkPresent(){
 		return containsElementBy(profileLink) && getElementBy(profileLink).isDisplayed();

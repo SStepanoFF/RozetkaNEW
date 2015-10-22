@@ -9,6 +9,7 @@ public class SigninModule extends AbstractContainer {
 	private final By passwordField = By.cssSelector("input[name=password]");
 	private final By submitBtn = By.cssSelector("button[name=auth_submit]");
 	private final By title = By.cssSelector("h5.auth-title");
+	private final By socialNetworksVessage= By.xpath("//a[@class='social-bind-tiny-close novisited']");
 	
 	public void enterUserName(String userName){
 		enterValueInTo(userNameField, userName);
@@ -20,6 +21,9 @@ public class SigninModule extends AbstractContainer {
 	
 	public void clickSubmit(){
 		clickElementBy(submitBtn);
+		if (containsElementBy(socialNetworksVessage)){
+			clickElementBy(socialNetworksVessage);
+		}
 	}
 	
 	public boolean isUniqueElementPresent(){

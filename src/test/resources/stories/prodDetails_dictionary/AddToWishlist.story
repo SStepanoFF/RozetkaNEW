@@ -11,3 +11,4 @@ And the user 'sergiistepanov85@gmail.com' with password 'sergii123' login to roz
 And wishlist is empty
 When the user clicks on Add to Wishlist btn
 Then product is added to wishlist
+Then clear wishlist

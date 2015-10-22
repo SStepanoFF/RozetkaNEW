@@ -60,6 +60,9 @@ public class AddToWishlistSteps {
 	
 	@Then ("clear wishlist")
 	public void thenClearWishlist(){
-		givenWishlistIsEmpty();
+		if(!userSearchPaneSteps.verifyIsWishlistEmpty()){
+			 userSearchPaneSteps.openWishlistPage();
+			 userWishlistSteps.clearWishlist();
+		}
 	}
 }

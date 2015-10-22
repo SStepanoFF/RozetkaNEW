@@ -15,7 +15,7 @@ public class SearchPane extends AbstractContainer {
 	private final By signinLink = By.cssSelector("a[name=signin]");
 	private final By profileLink = By.cssSelector("a[name=profile]");
 	private final By logoutBtn =By.cssSelector("a[name='signout']");
-	private final By wishListBtn=By.xpath("//div[@id='wishlist']");
+	private final By wishListBtn=By.id("wishlist-header");
 	
 	
 	public void enterInToSearchBox(String searchItem){
@@ -51,6 +51,7 @@ public class SearchPane extends AbstractContainer {
 	}
 	
 	public void openWishlist(){
+//		getElementBy(wishListBtn).click();
 		clickElementBy(wishListBtn);
 	}
 }

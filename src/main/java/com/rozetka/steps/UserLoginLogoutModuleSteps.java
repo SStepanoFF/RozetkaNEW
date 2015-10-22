@@ -27,6 +27,13 @@ public class UserLoginLogoutModuleSteps extends ScenarioSteps{
 	}
 	
 	@Step
+	public void login(String userName, String password){
+		signinModule.enterUserName(userName);
+		signinModule.enterPassword(password);
+		signinModule.clickSubmit();
+	}
+	
+	@Step
 	public void enterUserName(String userName){
 		signinModule.enterUserName(userName);
 	}

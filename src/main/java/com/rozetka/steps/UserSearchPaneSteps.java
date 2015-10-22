@@ -1,4 +1,6 @@
-package com.rozetka.pages;
+package com.rozetka.steps;
+
+import com.rozetka.pages.ProductDetailsPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -10,6 +12,11 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	@Step
 	public boolean verifyIsWishlistEmpty(){
 		return productDetailsPage.isWishListEmpty();
+	}
+	
+	@Step
+	public void openWishlistPage(){
+		productDetailsPage.openWishlist();
 	}
 
 }

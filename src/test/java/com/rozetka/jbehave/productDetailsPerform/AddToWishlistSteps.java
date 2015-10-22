@@ -8,6 +8,8 @@ import org.jbehave.core.annotations.When;
 import com.rozetka.pages.UserDetailsPage;
 import com.rozetka.steps.UserLoginLogoutModuleSteps;
 import com.rozetka.steps.UserProductDetailsPageSteps;
+import com.rozetka.steps.UserSearchPaneSteps;
+import com.rozetka.steps.UserWishlistSteps;
 
 import net.thucydides.core.annotations.Steps;
 
@@ -19,6 +21,12 @@ public class AddToWishlistSteps {
 	@Steps
 	UserLoginLogoutModuleSteps userLoginSteps;
 	
+	@Steps
+	UserWishlistSteps userWishlistSteps;
+	
+	@Steps
+	UserSearchPaneSteps userSearchPaneSteps;
+	
 	@Given("product details page is opened")
 	public void givenTheUserOpensAProductDetailsPage(){
 		userProdDetSteps.openProductDetailsPage();
@@ -26,7 +34,11 @@ public class AddToWishlistSteps {
 	
 	@Given("wishlist is empty")
 	public void givenWishlistIsEmpty(){
-		 if(userProdDetSteps.verifyIsWishlistEmpty()){}
+		 if(!userSearchPaneSteps.verifyIsWishlistEmpty()){
+			 userSearchPaneSteps.openWishlistPage();
+			 userWishlistSteps.clearWishlist();
+			 userProdDetSteps.openProductDetailsPage();
+		 }
 	}
 	
 	@Given ("the user '$userName' with password '$password' login to rozetka store")

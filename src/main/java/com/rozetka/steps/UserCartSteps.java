@@ -3,6 +3,7 @@ package com.rozetka.steps;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.rozetka.modules.Cart;
+import com.rozetka.steps.Variables.Variables;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
@@ -19,7 +20,7 @@ public class UserCartSteps extends ScenarioSteps {
 	
 	@Step
 	public void checkForItemInTheCart(){
-		assertThat("The "+this.searchTerm.toString()+" does not exist in the cart", cart.itemExists(this.searchTerm));
+		assertThat("The "+Variables.searchTerm.toString()+" does not exist in the cart", cart.itemExists(Variables.searchTerm));
 	}
 	
 	@Step

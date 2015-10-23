@@ -37,6 +37,7 @@ public class SigninPage extends AbstractContainer {
 	
 	public void openSigninPage(){
 		open();
+		waitForPageToLoad();
 	}
 	
 }

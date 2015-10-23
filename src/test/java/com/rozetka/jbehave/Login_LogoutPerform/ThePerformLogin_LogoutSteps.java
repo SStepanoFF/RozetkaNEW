@@ -1,65 +1,70 @@
-package com.rozetka.jbehave;
+package com.rozetka.jbehave.Login_LogoutPerform;
 
-import org.jbehave.core.annotations.AfterScenario;
-import org.jbehave.core.annotations.AfterStories;
-import org.jbehave.core.annotations.AfterStory;
-import org.jbehave.core.annotations.BeforeScenario;
-import org.jbehave.core.annotations.BeforeStory;
+
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import com.rozetka.steps.EndUserSteps;
-import com.rozetka.utils.RWebDriver;
+
+import com.rozetka.steps.UserDetailsPageSteps;
+import com.rozetka.steps.UserMainPageSteps;
+import com.rozetka.steps.UserSearchPaneSteps;
+import com.rozetka.steps.UserSigninPageSteps;
 
 import net.thucydides.core.annotations.Steps;
 
-public class TheLogin_LogoutSteps{
+public class ThePerformLogin_LogoutSteps{
 	 
 	@Steps
-	EndUserSteps endUser;
+	UserMainPageSteps mainPage;
+	@Steps
+	UserSigninPageSteps signinPage;
+	@Steps
+	UserDetailsPageSteps userDetails;
+	@Steps
+	UserSearchPaneSteps searchPane;
 	
 	
 	@Given("the user opens rozetka")
 	    public void givenTheUserOpensRozetkaStrore(){
-		endUser.opens_rozetka_store();
+		mainPage.opens_rozetka_store();
 	    }
 	
 	@Given("the user opens login page")
 	public void givenTheUserOpensLoginPage(){
-		endUser.openSigninPage();
+		signinPage.opensSigninPage();
 	}
 	
 	    
 	    @When("the user enters username: '$username' and password '$password'")
 	    public void whenTheUserEntersUsernameAndPassword(String userName, String password){
-	    	endUser.enterUserName(userName);
-	    	endUser.enterPassword(password);
+	    	signinPage.enterUserName(userName);
+	    	signinPage.enterPassword(password);
 	    }
 	    
 	    @Then("the user clicks on the submit button")
 	    public void thenTheUserClicksOnTheSubmitButton(){
-	    	endUser.clickSubmit();
+	    	signinPage.clickSubmit();
 	    }
 	    
 	    @Then("the user should be redirected to the user details page")
 	    public void thenTheUserShouldBeRedirectedToTheUserDetailsPage(){
-	    	endUser.verifyThatWeOnTheUserDetailsPage();
+	    	userDetails.verifyThatWeOnTheUserDetailsPage();
 	    }
 	    
 	    @Given ("the user is logged in")
 	    public void givenTheUserIsLoggedIn(){
-	    	endUser.verifyThatProfileLinkPresent();
+	    	searchPane.verifyThatProfileLinkPresent();
 	    }
 	    
 	    @When ("the user clicks logOut btn")
 	    public void whenTheUserClickLogOutBtn(){
-	    	endUser.logoutFromProfile();
+	    	searchPane.logoutFromProfile();
 	    }
 	    
 	    @Then ("the sign link should be displayed")
 	    public void thenTheSignLinkShouldBeDisplayed(){
-	    	endUser.verifyThatUserIsNOTLogin();
+	    	searchPane.verifyThatUserIsNOTLogin();
 	    }
 	    
 //	    @Given("the user logins with these credentials: '$userName' as username and '$password' as password")

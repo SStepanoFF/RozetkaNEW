@@ -16,14 +16,14 @@ public class WishlistPage extends SearchPane{
 	private final By deleteWishBtn =By.cssSelector("a[name='wishlist-block-price-delete']");
 	private final By emptyWishlistMess=By.xpath("//section[@class='wishlist-i']//h3[@class='wishlist-i-empty-title']");
 	
-	public boolean isWishesPresent(){
+	public boolean isWishlistEmpty(){
 		if (containsElementBy(deleteSingleWishBtn) && !containsElementBy(emptyWishlistMess)){
-			return true;
-		}else return false;
+			return false;
+		}else return true;
 	}
 	
 	public void deleteAllWishes(){
-		if (isWishesPresent()){
+		if (!isWishlistEmpty()){
 			for (WebElementFacade elem: getAllElementsBy(deleteSingleWishBtn)){
 				clickOn(elem);
 			}

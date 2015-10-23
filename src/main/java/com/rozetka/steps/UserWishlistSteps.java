@@ -17,7 +17,7 @@ public class UserWishlistSteps extends ScenarioSteps{
 	
 	@Step
 	public void verifyIsWishlistEmpty(){
-		assertThat("Wishlist is not empty", wishPage.isWishesPresent());
+		assertThat("Wishlist is not empty", wishPage.isWishlistEmpty());
 	}
 	
 }

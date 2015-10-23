@@ -52,9 +52,6 @@ public class SearchPane extends AbstractContainer {
 	}
 	
 	public void openWishlist() {
-		
-//		JavascriptExecutor executor = (JavascriptExecutor)getDriver();
-//		executor.executeScript("arguments[0].click();", getElementBy(wishListBtn));
 		clickElementBy(wishListBtn);
 		
 		getDriver().navigate().to("https://my.rozetka.com.ua/profile/wishlists/");

@@ -1,10 +1,10 @@
 Buying item on rozetka.com.ua
 Narrative:
-In order to buy an cell phone
+In order to buy an item
 As a user
-I want to buy an Iphone 6 16Gb Space Gray
+I want to buy an item using different ways
 
-Scenario: Purchasing the item of Iphone 6 16GB Space Gray
+Scenario: Purchasing the item of Iphone 6 16GB Space Gray from the Search Result Page
 Given the user opens rozetka store
 Given the user looks for 'Apple iPhone 6 16GB' 'Space Gray'
 When the user buys the item
@@ -22,7 +22,7 @@ When cart appeared
 Then the item should exist in the cart
 Then the user closes cart
 
-Scenario: Checking the position of purchased item
+Scenario: Checking the position of purchased item and purchase it from the Product Details Page
 Given the user opens rozetka store
 Given the user looks for 'Samsung Galaxy' 'Black'
 Then the user selects the 'smartphones' category

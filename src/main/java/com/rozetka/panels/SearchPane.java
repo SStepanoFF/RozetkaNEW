@@ -1,10 +1,9 @@
 package com.rozetka.panels;
 
-import org.openqa.selenium.By;
 
+import org.openqa.selenium.By;
 import com.rozetka.utils.AbstractContainer;
 
-import net.serenitybdd.core.pages.PageObject;
 
 public class SearchPane extends AbstractContainer {
 	
@@ -15,7 +14,7 @@ public class SearchPane extends AbstractContainer {
 	private final By signinLink = By.cssSelector("a[name=signin]");
 	private final By profileLink = By.cssSelector("a[name=profile]");
 	private final By logoutBtn =By.cssSelector("a[name='signout']");
-	private final By wishListBtn=By.id("wishlist-header");
+	private final By wishListBtn=By.xpath("//div[@id='wishlist']//a");
 	
 	
 	public void enterInToSearchBox(String searchItem){
@@ -50,8 +49,10 @@ public class SearchPane extends AbstractContainer {
 		return containsElementBy(signinLink) && getElementBy(signinLink).isDisplayed();
 	}
 	
-	public void openWishlist(){
-//		getElementBy(wishListBtn).click();
+	public void openWishlist() {
+		
+//		JavascriptExecutor executor = (JavascriptExecutor)getDriver();
+//		executor.executeScript("arguments[0].click();", getElementBy(wishListBtn));
 		clickElementBy(wishListBtn);
 	}
 }

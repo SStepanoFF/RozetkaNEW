@@ -8,6 +8,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import static com.rozetka.steps.Variables.Variables.getVariables;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserSearchPaneSteps extends ScenarioSteps{
 	
@@ -22,7 +23,12 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	}
 	
 	@Step
-	public boolean verifyIsWishlistEmpty(){
+	public void verifyIsWishlistEmpty(){
+		assertThat("Wishlist is not empty", productDetailsPage.isWishListEmpty());
+	}
+	
+	@Step
+	public boolean isWishlistEmpty(){
 		return productDetailsPage.isWishListEmpty();
 	}
 	

@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
@@ -47,6 +48,11 @@ public abstract class AbstractContainer extends PageObject{
 //            }
 //        }
     }
+	
+//	@Override
+//	 public void setDriver(WebDriver driver) {
+//        setDriver(RWebDriver.getInstance().getWebDriver(), getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
+//    }
 	
 //	private boolean pageIsLoaded() {
 //        try {
@@ -218,4 +224,8 @@ public abstract class AbstractContainer extends PageObject{
         } catch (NoAlertPresentException ex) {
         } 
     }
+	
+	protected void clearFieldBy(By by){
+		getElementBy(by).clear();
+	}
 }

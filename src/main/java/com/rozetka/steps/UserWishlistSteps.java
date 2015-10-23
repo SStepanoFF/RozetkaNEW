@@ -1,5 +1,6 @@
 package com.rozetka.steps;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import com.rozetka.pages.WishlistPage;
 
 import net.thucydides.core.annotations.Step;
@@ -12,6 +13,11 @@ public class UserWishlistSteps extends ScenarioSteps{
 	@Step
 	public void clearWishlist(){
 		wishPage.deleteAllWishes();
+	}
+	
+	@Step
+	public void verifyIsWishlistEmpty(){
+		assertThat("Wishlist is not empty", wishPage.isWishesPresent());
 	}
 	
 }

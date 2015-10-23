@@ -1,5 +1,6 @@
 package com.rozetka.jbehave.productDetailsPerform;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
@@ -41,9 +42,10 @@ public class AddToWishlistSteps {
 	
 	@Given("wishlist is empty")
 	public void givenWishlistIsEmpty(){
-		 if(!userSearchPaneSteps.verifyIsWishlistEmpty()){
+		 if(!userSearchPaneSteps.isWishlistEmpty()){
 			 userSearchPaneSteps.openWishlistPage();
 			 userWishlistSteps.clearWishlist();
+			 userWishlistSteps.verifyIsWishlistEmpty();
 			 userProdDetSteps.openProductDetailsPage();
 		 }
 	}
@@ -60,9 +62,10 @@ public class AddToWishlistSteps {
 	
 	@Then ("clear wishlist")
 	public void thenClearWishlist(){
-		if(!userSearchPaneSteps.verifyIsWishlistEmpty()){
+		if(!userSearchPaneSteps.isWishlistEmpty()){
 			 userSearchPaneSteps.openWishlistPage();
 			 userWishlistSteps.clearWishlist();
 		}
+		userSearchPaneSteps.verifyIsWishlistEmpty();
 	}
 }

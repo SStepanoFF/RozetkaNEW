@@ -28,7 +28,7 @@ public class ProductDetailsPage extends SearchPane {
 	private final By saveToWishlist= By.xpath("//div[@class='wishlists-i']//button");
 	private final By closePopupMess= By.cssSelector("a[class='popup-close']");
 	private final By popudWishAdded= By.cssSelector("h2[class='wishlists-title']");
-	private final By wishCount= By.className("hub-i-count");
+	private final By wishCount= By.xpath("//div[@id='wishlist']//span[@class='hub-i-count']");
 	
 	public void openProdDetailsPage(){
 		open();

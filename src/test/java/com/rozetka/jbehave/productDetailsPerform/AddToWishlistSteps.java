@@ -28,9 +28,12 @@ public class AddToWishlistSteps {
 	@Steps
 	UserSearchPaneSteps userSearchPaneSteps;
 	
-	@Given("product details page is opened")
-	public void givenTheUserOpensAProductDetailsPage(){
-		userProdDetSteps.openProductDetailsPage();
+	private String url;
+	
+	@Given("product details page url '$url' is opened")
+	public void givenTheUserOpensAProductDetailsPage(String url){
+		this.url=url;
+		userProdDetSteps.openProductDetailsPage(url);
 	}
 	
 	@Given ("the user '$userName' with password '$password' login to rozetka store")
@@ -46,7 +49,7 @@ public class AddToWishlistSteps {
 			 userSearchPaneSteps.openWishlistPage();
 			 userWishlistSteps.clearWishlist();
 			 userWishlistSteps.verifyIsWishlistEmpty();
-			 userProdDetSteps.openProductDetailsPage();
+			 userProdDetSteps.openProductDetailsPage(url);
 		 }
 	}
 	

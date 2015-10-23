@@ -228,4 +228,12 @@ public abstract class AbstractContainer extends PageObject{
 	protected void clearFieldBy(By by){
 		getElementBy(by).clear();
 	}
+	
+	protected void waitForElementBy(By by) {
+		waitForRenderedElements(by);
+    }
+	
+	protected void openURL(String url){
+		getDriver().navigate().to(url);
+	}
 }

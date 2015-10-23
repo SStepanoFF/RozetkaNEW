@@ -4,7 +4,9 @@ package com.rozetka.panels;
 import org.openqa.selenium.By;
 import com.rozetka.utils.AbstractContainer;
 
+import net.thucydides.core.annotations.DefaultUrl;
 
+@DefaultUrl("https://my.rozetka.com.ua/profile/wishlists/")
 public class SearchPane extends AbstractContainer {
 	
 	//Locators
@@ -54,5 +56,7 @@ public class SearchPane extends AbstractContainer {
 //		JavascriptExecutor executor = (JavascriptExecutor)getDriver();
 //		executor.executeScript("arguments[0].click();", getElementBy(wishListBtn));
 		clickElementBy(wishListBtn);
+		
+		getDriver().navigate().to("https://my.rozetka.com.ua/profile/wishlists/");
 	}
 }

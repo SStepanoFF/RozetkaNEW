@@ -15,9 +15,9 @@ public class AddCommentForProductSteps{
 	UserLoginLogoutModuleSteps userLoginSteps;
 	
 	
-	@Given("the user opens a product details page")
-	public void givenTheUserOpensAProductDetailsPage(){
-		userProdDetSteps.openProductDetailsPage();
+	@Given("the user opens a product details page url '$url'")
+	public void givenTheUserOpensAProductDetailsPage(String url){
+		userProdDetSteps.openProductDetailsPage(url);
 	}
 	
 	@Given("product is '$notebook' with '$size'")

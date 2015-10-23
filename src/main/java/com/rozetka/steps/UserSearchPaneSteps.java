@@ -27,7 +27,12 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	}
 	
 	@Step
-	public boolean verifyIsWishlistEmpty(){
+	public void verifyIsWishlistEmpty(){
+		assertThat("Wishlist is not empty", productDetailsPage.isWishListEmpty());
+	}
+	
+	@Step
+	public boolean isWishlistEmpty(){
 		return productDetailsPage.isWishListEmpty();
 	}
 	

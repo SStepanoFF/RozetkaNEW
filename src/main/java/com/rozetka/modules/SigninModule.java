@@ -12,6 +12,7 @@ public class SigninModule extends AbstractContainer {
 	private final By socialNetworksVessage= By.xpath("//a[@class='social-bind-tiny-close novisited']");
 	
 	public void enterUserName(String userName){
+		clearFieldBy(userNameField);
 		enterValueInTo(userNameField, userName);
 	}
 	

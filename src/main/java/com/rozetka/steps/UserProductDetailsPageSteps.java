@@ -14,8 +14,8 @@ public class UserProductDetailsPageSteps extends ScenarioSteps {
 	String commentText;
 	
 	@Step
-	public void openProductDetailsPage(){
-		productDetailsPage.openProdDetailsPage();
+	public void openProductDetailsPage(String url){
+		productDetailsPage.openProdDetailsPage(url);
 	}
 	
 	@Step

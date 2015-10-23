@@ -30,8 +30,8 @@ public class ProductDetailsPage extends SearchPane {
 	private final By popudWishAdded= By.cssSelector("h2[class='wishlists-title']");
 	private final By wishCount= By.xpath("//div[@id='wishlist']//span[@class='hub-i-count']");
 	
-	public void openProdDetailsPage(){
-		open();
+	public void openProdDetailsPage(String url){
+		openURL(url);
 		waitForPageToLoad();
 	}
 	
@@ -87,6 +87,7 @@ public class ProductDetailsPage extends SearchPane {
 	public void addToWishlist(){
 		clickElementBy(addToWishlistBtn);
 		clickElementBy(saveToWishlist);
+		waitForElementBy(popudWishAdded);
 	}
 	
 	public boolean isProductAddedToWishlist(){

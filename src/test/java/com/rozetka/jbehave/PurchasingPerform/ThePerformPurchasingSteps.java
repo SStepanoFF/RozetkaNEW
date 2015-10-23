@@ -58,6 +58,11 @@ public class ThePerformPurchasingSteps {
     	cart.checkForItemInTheCart();
     }
     
+    @Then("the item should be on '$position'th position in the cart")
+    public void thenTheItemShouldBeOnPosition(String expectedPosition){
+    	cart.checkPositionOfTheItemInTheCart(null, expectedPosition);
+    }
+    
     @Then("the user closes cart")
     public void thenTheuserClosesCart(){
     	cart.closeCart();

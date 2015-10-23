@@ -30,6 +30,8 @@ public class SearchResultPage extends SearchFilterPane {
 	//Item Containters
 	private final By availableItemContainerLocator = By.cssSelector("div.g-i-list.available[data-location=searchResults]");
 	private final By outOfStockItemContainerLocator = By.cssSelector("div.g-i-list.unavailable[data-location=searchResults]");
+	private final By limitedItemContainerLocator = By.cssSelector("div.g-i-list.limited[data-location=searchResults]");
+	private final By archiveItemContainerLocator = By.cssSelector("div.g-i-list.archive[data-location=searchResults]");
 	//private final By rightPartContainer = By.cssSelector("div.g-i-list-right-part")
 	//private final By toolsContainter = By.cssSelector("div.g-tools-container]");
 
@@ -39,9 +41,14 @@ public class SearchResultPage extends SearchFilterPane {
 		if(isItemAvailable(itemName)){
 			itemContainer = getItemContainer(itemName);
 			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
-		} else{
+		} else if(isItemLimited(itemName)){
+			itemContainer = getItemContainer(itemName, "limited");
+			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
+		} else if(isItemArchieved(itemName)){
+			assertThat("The following item: "+itemName+" is archived", false);
+		} else if(isItemUnavailable(itemName)){
 			assertThat("The following item: "+itemName+" is out of stock", false);
-		}	
+		}
 	}
 		
 	public boolean isItemAvailable(String itemName){
@@ -50,32 +57,65 @@ public class SearchResultPage extends SearchFilterPane {
 		
 		WebElementFacade itemContainer = getItemContainer(itemName);
 		
-		
 		if(itemContainer!=null){
 			isAvailable=true;
-		} else if(itemContainer==null){
-			itemContainer=getItemContainer(itemName, false);
-			if(itemContainer!=null){
-				isAvailable=false;
-			}else {
-				assertThat("The following item: "+itemName+" does not exist either in available and out of stock.", false);
-			}
 		}
 		return isAvailable;
 	}
+	
+	public boolean isItemUnavailable(String itemName){
+		boolean isUnavailable=false;
+		
+		WebElementFacade itemContainer = getItemContainer(itemName, "unavailable");
+		
+		if(itemContainer!=null){
+			isUnavailable=true; 
+		}
+		return isUnavailable;
+	}
+	
+	public boolean isItemLimited(String itemName){
+		boolean isLimited=false;
+		
+		WebElementFacade itemContainer = getItemContainer(itemName, "limited");
+		
+		if(itemContainer!=null){
+			isLimited=true;
+		}
+		return isLimited;
+	}
+	
+	public boolean isItemArchieved(String itemName){
+		boolean isArchive=false;
+		
+		WebElementFacade itemContainer = getItemContainer(itemName, "archive");
+		
+		if(itemContainer!=null){
+			isArchive=true; 
+		}
+		return isArchive;
+	}
+
 		
 	private WebElementFacade getItemContainer(String itemName){
-		return getItemContainer(itemName, true);
+		return getItemContainer(itemName, "available");
 	}
 		
-	private WebElementFacade getItemContainer(String itemName, boolean available){
+	//It accepts only 'available', 'unavailable', 'limited', 'archive' 
+	private WebElementFacade getItemContainer(String itemName, String exists){
 			
-		List<WebElementFacade> itemContainers;
+		List<WebElementFacade> itemContainers = null;
 		
-		if(!available){
+		if(exists=="unavailable"){
 			itemContainers = getAllElementsBy(outOfStockItemContainerLocator);
-		}else{
+		}else if(exists=="available"){
 			itemContainers = getAllElementsBy(availableItemContainerLocator);
+		}else if(exists=="limited"){
+			itemContainers = getAllElementsBy(limitedItemContainerLocator);
+		} else if(exists=="archive"){
+			itemContainers = getAllElementsBy(archiveItemContainerLocator);
+		} else{
+			assertThat("The getItemContainer method in the SearchResultPage only accepts 'available', 'unavailable', 'limited', 'archive' values in the exists parameter", false);
 		}
 			
 		for(int i=0; i<itemContainers.size(); i++){

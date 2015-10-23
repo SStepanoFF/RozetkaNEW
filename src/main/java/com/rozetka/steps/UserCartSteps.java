@@ -22,7 +22,27 @@ public class UserCartSteps extends ScenarioSteps {
 	
 	@Step
 	public void checkForItemInTheCart(){
-		assertThat("The "+getVariables().searchTerm+" does not exist in the cart", cart.itemExists(getVariables().searchTerm));
+		assertThat("The "+getVariables().searchTerm+" does not exist in the cart", cart.isItemInTheCart(getVariables().searchTerm));
+	}
+	
+	@Step
+	public void checkPositionOfTheItemInTheCart(String itemName, String expectedPosition){
+		
+		String name=null;
+		
+		if(itemName==null){
+			name=getVariables().searchTerm;
+		}else {
+			name=itemName;
+		}
+		
+		Integer itemPosition=cart.getItemPositionInTheCart(name);
+		
+		if(itemPosition==0){
+				assertThat("The item: "+name+ " is not present in the cart", false);
+		}else {
+			assertThat("The position of the: "+name+" in the cart is: "+itemPosition+" , but should be: "+expectedPosition, expectedPosition.equals(itemPosition.toString()));
+		}
 	}
 	
 	@Step

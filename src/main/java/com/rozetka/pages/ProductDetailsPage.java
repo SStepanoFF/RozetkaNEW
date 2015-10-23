@@ -11,6 +11,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 public class ProductDetailsPage extends SearchPane {
 	
 	private final By productTitle=By.cssSelector("h1[class='detail-title']");
+	private final By purchasesButon = By.cssSelector("button.btn-link-i[name=topurchases]");
 	
 	private final By shortCommentTabBtn=By.xpath("//ul[@class='clearfix']//li[2]/a");
 	private final By commentTextField=By.cssSelector("textarea[name='text']");
@@ -33,6 +34,10 @@ public class ProductDetailsPage extends SearchPane {
 	public void openProdDetailsPage(String url){
 		openURL(url);
 		waitForPageToLoad();
+	}
+	
+	public void clickBuy(){
+		clickElementBy(purchasesButon);
 	}
 	
 	public String getProductTitle(){
@@ -110,5 +115,7 @@ public class ProductDetailsPage extends SearchPane {
 		}else return true;
 	}
 	
-
+	public boolean onPage(){
+		return isElementVisible(getElementBy(productTitle));
+	}
 }

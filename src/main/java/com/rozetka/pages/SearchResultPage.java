@@ -36,26 +36,33 @@ public class SearchResultPage extends SearchFilterPane {
 	//private final By toolsContainter = By.cssSelector("div.g-tools-container]");
 
 		
-	public void buyItem(String itemName){
+	public void buyItem(String itemName, String additionalSearchCriteria){
+		String additional=null;
+		if(additionalSearchCriteria!=null){
+			additional=additionalSearchCriteria;
+		}
 		WebElementFacade itemContainer;
-		if(isItemAvailable(itemName)){
-			itemContainer = getItemContainer(itemName);
+		if(isItemAvailable(itemName, additional)){
+			itemContainer = getItemContainer(itemName,"available",additional);
 			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
-		} else if(isItemLimited(itemName)){
-			itemContainer = getItemContainer(itemName, "limited");
+		} else if(isItemLimited(itemName, additional)){
+			itemContainer = getItemContainer(itemName, "limited", additional);
 			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
-		} else if(isItemArchieved(itemName)){
+		} else if(isItemArchieved(itemName, additional)){
 			assertThat("The following item: "+itemName+" is archived", false);
-		} else if(isItemUnavailable(itemName)){
+		} else if(isItemUnavailable(itemName, additional)){
 			assertThat("The following item: "+itemName+" is out of stock", false);
 		}
 	}
 		
-	public boolean isItemAvailable(String itemName){
-		
+	public boolean isItemAvailable(String itemName, String additionalSearchCriteria){
+		String additional=null;
+		if(additionalSearchCriteria!=null){
+			additional=additionalSearchCriteria;
+		}
 		boolean isAvailable=false;
 		
-		WebElementFacade itemContainer = getItemContainer(itemName);
+		WebElementFacade itemContainer = getItemContainer(itemName, "available" ,additional);
 		
 		if(itemContainer!=null){
 			isAvailable=true;
@@ -63,10 +70,14 @@ public class SearchResultPage extends SearchFilterPane {
 		return isAvailable;
 	}
 	
-	public boolean isItemUnavailable(String itemName){
+	public boolean isItemUnavailable(String itemName, String additionalSearchCriteria){
+		String aditional=null;
+		if(additionalSearchCriteria!=null){
+			aditional=additionalSearchCriteria;
+		}
 		boolean isUnavailable=false;
 		
-		WebElementFacade itemContainer = getItemContainer(itemName, "unavailable");
+		WebElementFacade itemContainer = getItemContainer(itemName, "unavailable", aditional);
 		
 		if(itemContainer!=null){
 			isUnavailable=true; 
@@ -74,10 +85,14 @@ public class SearchResultPage extends SearchFilterPane {
 		return isUnavailable;
 	}
 	
-	public boolean isItemLimited(String itemName){
+	public boolean isItemLimited(String itemName, String additionalSearchCriteria){
+		String aditional=null;
+		if(additionalSearchCriteria!=null){
+			aditional=additionalSearchCriteria;
+		}
 		boolean isLimited=false;
 		
-		WebElementFacade itemContainer = getItemContainer(itemName, "limited");
+		WebElementFacade itemContainer = getItemContainer(itemName, "limited", aditional);
 		
 		if(itemContainer!=null){
 			isLimited=true;
@@ -85,10 +100,14 @@ public class SearchResultPage extends SearchFilterPane {
 		return isLimited;
 	}
 	
-	public boolean isItemArchieved(String itemName){
+	public boolean isItemArchieved(String itemName, String additionalSearchCriteria){
+		String aditional=null;
+		if(additionalSearchCriteria!=null){
+			aditional=additionalSearchCriteria;
+		}
 		boolean isArchive=false;
 		
-		WebElementFacade itemContainer = getItemContainer(itemName, "archive");
+		WebElementFacade itemContainer = getItemContainer(itemName, "archive", aditional);
 		
 		if(itemContainer!=null){
 			isArchive=true; 
@@ -97,12 +116,12 @@ public class SearchResultPage extends SearchFilterPane {
 	}
 
 		
-	private WebElementFacade getItemContainer(String itemName){
-		return getItemContainer(itemName, "available");
-	}
+//	private WebElementFacade getItemContainer(String itemName){
+//		return getItemContainer(itemName, "available", null);
+//	}
 		
 	//It accepts only 'available', 'unavailable', 'limited', 'archive' 
-	private WebElementFacade getItemContainer(String itemName, String exists){
+	private WebElementFacade getItemContainer(String itemName, String exists, String additionSearchCriteria){
 			
 		List<WebElementFacade> itemContainers = null;
 		
@@ -122,15 +141,22 @@ public class SearchResultPage extends SearchFilterPane {
 			WebElementFacade elementContainer = itemContainers.get(i);
 			WebElementFacade elementLink = getChildOfElementFacade(elementContainer, itemLink);
 			if(elementLink.getText().toLowerCase().contains(itemName.toLowerCase())){
-				return elementContainer;
+				if(additionSearchCriteria!=null){
+					if(elementLink.getText().toLowerCase().contains(additionSearchCriteria.toLowerCase())){
+						return elementContainer;
+					}
+				}else{
+					return elementContainer;
+				}
 			}
 		}
 		return null;
 	}
 	
 	///
-	public void goToItemPage(String itemName){
-		clickElementBy(By.xpath("//a[contains(text(),\'"+itemName+"\']"));
+	public void goToItemPage(String itemName, String additionalSearchCriteria){
+		clickWebElement(findElementAtListByParametr(itemName, additionalSearchCriteria));
+		//clickElementBy(By.xpath("//a[contains(text(),\'"+itemName+"\']"));
 	}
 	
 	@Deprecated
@@ -138,6 +164,7 @@ public class SearchResultPage extends SearchFilterPane {
 		clickWebElement(getChildOfElementFacade(findElementAtListByParametr(itemName), By.xpath(purchaseItemBtn)));
 	}
 	
+
 	private WebElementFacade findElementAtListByParametr(String... parametr){
 		boolean find=true;
 		List<WebElementFacade> elements = getAllElementsBy(By.xpath("//div[@class=\'g-i-list-title\']/a"));

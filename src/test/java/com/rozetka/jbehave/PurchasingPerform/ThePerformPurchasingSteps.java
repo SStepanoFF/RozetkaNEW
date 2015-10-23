@@ -8,6 +8,7 @@ import org.jbehave.core.annotations.When;
 
 import com.rozetka.steps.UserCartSteps;
 import com.rozetka.steps.UserMainPageSteps;
+import com.rozetka.steps.UserProductDetailsPageSteps;
 import com.rozetka.steps.UserSearchFilterPaneSteps;
 import com.rozetka.steps.UserSearchPaneSteps;
 import com.rozetka.steps.UserSearchResultPageSteps;
@@ -24,6 +25,8 @@ public class ThePerformPurchasingSteps {
     UserSearchResultPageSteps searchResult;
     @Steps
     UserCartSteps cart;
+    @Steps
+    UserProductDetailsPageSteps productDetails;
 
     ///
     @Given("the user opens rozetka store")
@@ -31,14 +34,29 @@ public class ThePerformPurchasingSteps {
     	mainPage.opens_rozetka_store();
     }
     
-    @Given("the user looks for '$itemName'")
-    public void givenTheUserLooksForItem(String itemName){
-    	searchPane.lookFor(itemName);
+    @Given("the user looks for '$itemName' '$additionalSearchCriteria'")
+    public void givenTheUserLooksForItem(String itemName, String additional){
+    	searchPane.lookFor(itemName, additional);
     }
     
     @Then("the user selects the '$categoryName' category")
     public void thenTheUserSelectsTheCategory(String category){
     	searchFilter.selectCategory(category);
+    }
+    
+    @When("the user click on the given item")
+    public void whenTheUserClickOnTheGivenItem(){
+    	searchResult.goToItemDetailsPage();
+    }
+
+    @Then("the item details page should appear")
+    public void thenTheItemDetailsPageShouldAppear(){
+    	productDetails.checkIfUserOnTheProductDetailsPage();
+    }
+    
+    @Then("the user click on buy button from the Product Details Page")
+    public void thenTheUserClickBuyOnProdDetails(){
+    	productDetails.buyItemFromDetailsPage();
     }
     
     @When("the user buys the item")

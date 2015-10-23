@@ -4,6 +4,7 @@ public class Variables {
 	private static Variables instance;
 	
 	public String searchTerm;
+	public String additionalSearchCriteria;
 	
 	private Variables(){		
 	}

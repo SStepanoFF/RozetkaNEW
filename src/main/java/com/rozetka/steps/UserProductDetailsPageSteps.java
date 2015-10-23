@@ -14,6 +14,11 @@ public class UserProductDetailsPageSteps extends ScenarioSteps {
 	String commentText;
 	
 	@Step
+	public void buyItemFromDetailsPage(){
+		productDetailsPage.clickBuy();
+	}
+	
+	@Step
 	public void openProductDetailsPage(String url){
 		productDetailsPage.openProdDetailsPage(url);
 	}
@@ -51,7 +56,10 @@ public class UserProductDetailsPageSteps extends ScenarioSteps {
 		assertThat("Product is not added to wishlist",productDetailsPage.isProductAddedToWishlist());
 	}
 	
-	
+	@Step
+	public void checkIfUserOnTheProductDetailsPage(){
+		assertThat("The product details page did not appear", productDetailsPage.onPage());
+	}
 
 	
 

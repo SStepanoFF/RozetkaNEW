@@ -20,9 +20,10 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	
 	
 	@Step
-	public void lookFor(String searchTerm){
+	public void lookFor(String searchTerm, String additionalSearchCriteria){
+		getVariables().additionalSearchCriteria=additionalSearchCriteria;
 		getVariables().searchTerm=searchTerm;
-		mainPage.enterInToSearchBox(searchTerm);
+		mainPage.enterInToSearchBox(searchTerm+" "+additionalSearchCriteria);
 		mainPage.clickSearch();
 	}
 	

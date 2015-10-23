@@ -10,6 +10,7 @@ Given the user looks for 'Apple iPhone 6 16GB Space Gray'
 When the user buys the item
 When cart appeared
 Then the item should exist in the cart
+Then the item should be on '1'th position in the cart
 Then the user closes cart
 
 Scenario: Purchasing the item with inaccurate name
@@ -19,4 +20,14 @@ Then the user selects the 'notebooks' category
 Then the user buys the item
 When cart appeared
 Then the item should exist in the cart
+Then the user closes cart
+
+Scenario: Checking the position of purchased item
+Given the user opens rozetka store
+Given the user looks for 'Samsung Galaxy'
+Then the user selects the 'smartphones' category
+Then the user buys the item
+When cart appeared
+Then the item should exist in the cart
+Then the item should be on '1'th position in the cart
 Then the user closes cart

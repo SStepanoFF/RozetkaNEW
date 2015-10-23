@@ -1,4 +1,4 @@
-package com.rozetka.jbehave;
+package com.rozetka.jbehave.PurchasingPerform;
 
 import net.thucydides.core.annotations.Steps;
 
@@ -6,51 +6,61 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import com.rozetka.steps.EndUserSteps;
-import com.rozetka.steps.UserPurchasingSteps;
+import com.rozetka.steps.UserCartSteps;
+import com.rozetka.steps.UserMainPageSteps;
+import com.rozetka.steps.UserSearchFilterPaneSteps;
+import com.rozetka.steps.UserSearchPaneSteps;
+import com.rozetka.steps.UserSearchResultPageSteps;
 
-public class ThePurchasingSteps {
+public class ThePerformPurchasingSteps {
 
     @Steps
-    UserPurchasingSteps userPurchasing;
-    EndUserSteps endUser;
+    UserMainPageSteps mainPage;
+    @Steps
+    UserSearchPaneSteps searchPane;
+    @Steps
+    UserSearchFilterPaneSteps searchFilter;
+    @Steps
+    UserSearchResultPageSteps searchResult;
+    @Steps
+    UserCartSteps cart;
 
     ///
     @Given("the user opens rozetka store")
     public void givenTheUserOpensRozetkaStrore(){
-    	userPurchasing.opens_rozetka_store();
+    	mainPage.opens_rozetka_store();
     }
     
     @Given("the user looks for '$itemName'")
     public void givenTheUserLooksForItem(String itemName){
-    	userPurchasing.lookFor(itemName);
+    	searchPane.lookFor(itemName);
     }
     
     @Then("the user selects the '$categoryName' category")
     public void thenTheUserSelectsTheCategory(String category){
-    		userPurchasing.selectCategory(category);
+    	searchFilter.selectCategory(category);
     }
     
     @When("the user buys the item")
     @Then("the user buys the item")
     public void whenTheUserBuysTheItem(){
-    	userPurchasing.purchaseTheItem();
+    	searchResult.purchaseTheItem();
     }
     
     @When("cart appeared")
     @Then("cart should appear")
     public void whenTheCartAppears(){
-    	userPurchasing.checkIsCartDisplayed();
+    	cart.checkIsCartDisplayed();
     }
     
     @Then("the item should exist in the cart")
     public void thenTheItemShouldExistInTheCart(){
-    	userPurchasing.checkForItemInTheCart();
+    	cart.checkForItemInTheCart();
     }
     
     @Then("the user closes cart")
     public void thenTheuserClosesCart(){
-    	userPurchasing.closeCart();
+    	cart.closeCart();
     }
     
 //    @Given("the user opens login form")

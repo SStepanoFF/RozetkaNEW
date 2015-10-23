@@ -1,4 +1,4 @@
-package com.rozetka.jbehave;
+package com.rozetka.jbehave.Login_LogoutPerform;
 
 import net.serenitybdd.jbehave.SerenityStory;
 

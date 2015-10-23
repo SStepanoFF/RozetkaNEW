@@ -22,7 +22,7 @@ public class UserCartSteps extends ScenarioSteps {
 	
 	@Step
 	public void checkForItemInTheCart(){
-		assertThat("The "+getVariables().searchTerm.toString()+" does not exist in the cart", cart.itemExists(getVariables().searchTerm));
+		assertThat("The "+getVariables().searchTerm+" does not exist in the cart", cart.itemExists(getVariables().searchTerm));
 	}
 	
 	@Step

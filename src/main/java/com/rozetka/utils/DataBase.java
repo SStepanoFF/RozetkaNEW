@@ -5,8 +5,9 @@ import java.text.SimpleDateFormat;
 
 public class DataBase {
 
-    private static final String dbLogin="";//Loader.loadProperty("dbLogin");
-    private static final String dbPass="";//Loader.loadProperty("dbPass");
+    private static final String dbLogin = PropertyLoader.loadUserProperty("dbUserName");//Loader.loadProperty("dbLogin");
+    private static final String dbPass = PropertyLoader.loadUserProperty("dbPassword");//Loader.loadProperty("dbPass");
+    private static final String dbLocation = PropertyLoader.loadUserProperty("dbLocation");/*   //mysql-kstest2.t1.tenet:3306/sutter_health      */
 
 
     public static final String executeSQLQuery(String query, String columnName){
@@ -16,7 +17,7 @@ public class DataBase {
         ResultSet resultSets=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");//Driver registration
-            conn = DriverManager.getConnection("jdbc:mysql://mysql-kstest2.t1.tenet:3306/sutter_health",
+            conn = DriverManager.getConnection("jdbc:mysql:"+PropertyLoader.loadUserProperty("dbLocation"),
                     dbLogin, dbPass);//Set connection to the database
             statement = conn.createStatement();//Request preparation
             resultSets = statement.executeQuery(query);

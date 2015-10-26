@@ -20,17 +20,21 @@ public class Variables {
 	}
 	
 	public static String getValue(String key){
-		if(getVariables().keyValue.containsKey(key)){
+		if(isKeyPresent(key)){
 			return getVariables().keyValue.get(key);
 		}else return null;
 	}
 	
 	public static void putValue(String key, String value){
-		if(getVariables().keyValue.containsKey(key)){
+		if(isKeyPresent(key)){
 			getVariables().keyValue.replace(key, value);
 		}else {
 			getVariables().keyValue.put(key, value);
 		}
+	}
+	
+	public static boolean isKeyPresent(String key){
+		return getVariables().keyValue.containsKey(key);
 	}
 
 }

@@ -3,8 +3,6 @@ package com.rozetka.utils;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import com.rozetka.steps.Variables.Variables;
-
 import java.io.*;
 import java.util.Properties;
 

@@ -6,10 +6,10 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 
-import com.rozetka.steps.UserDetailsPageSteps;
-import com.rozetka.steps.UserMainPageSteps;
-import com.rozetka.steps.UserSearchPaneSteps;
-import com.rozetka.steps.UserSigninPageSteps;
+import com.rozetka.thucydides.steps.UserDetailsPageSteps;
+import com.rozetka.thucydides.steps.UserMainPageSteps;
+import com.rozetka.thucydides.steps.UserSearchPaneSteps;
+import com.rozetka.thucydides.steps.UserSigninPageSteps;
 
 import net.thucydides.core.annotations.Steps;
 

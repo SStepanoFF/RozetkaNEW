@@ -1,4 +1,4 @@
-package com.rozetka.steps;
+package com.rozetka.thucydides.steps;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 

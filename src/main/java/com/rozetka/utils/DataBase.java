@@ -43,6 +43,26 @@ public class DataBase {
             throw new RuntimeException("ERROR! Can't find in DB!");
         } else return result;
     }
+    
+//    public static final String[][] executeSQLQueryToArray(String query){
+//    	 String result = null;
+//         Connection conn = null;
+//         Statement statement = null;
+//         ResultSet resultSets=null;
+//         int i=0;
+//         String[][] array;
+//         
+//         try {
+//             Class.forName("com.mysql.jdbc.Driver");//Driver registration
+//             conn = DriverManager.getConnection("jdbc:mysql:"+dbLocation,
+//                     dbLogin, dbPass);//Set connection to the database
+//             statement = conn.createStatement();//Request preparation
+//             resultSets = statement.executeQuery(query);
+//             while(resultSets.next()){
+//            	 
+//             }
+//         }
+//    }
 }
 
 //Example  DataBase.executeSQLQuery("SELECT project_number from projects WHERE project_number=1", "project_number" );

@@ -1,9 +1,8 @@
 package com.rozetka.jbehave.productDetailsPerform;
 import org.jbehave.core.annotations.*;
 
-import com.rozetka.steps.EndUserSteps;
-import com.rozetka.steps.UserLoginLogoutModuleSteps;
-import com.rozetka.steps.UserProductDetailsPageSteps;
+import com.rozetka.thucydides.steps.UserLoginLogoutModuleSteps;
+import com.rozetka.thucydides.steps.UserProductDetailsPageSteps;
 
 import net.thucydides.core.annotations.Steps;
 public class AddCommentForProductSteps{

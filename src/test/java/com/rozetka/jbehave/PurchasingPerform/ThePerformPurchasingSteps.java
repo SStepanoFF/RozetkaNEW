@@ -6,12 +6,12 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
-import com.rozetka.steps.UserCartSteps;
-import com.rozetka.steps.UserMainPageSteps;
-import com.rozetka.steps.UserProductDetailsPageSteps;
-import com.rozetka.steps.UserSearchFilterPaneSteps;
-import com.rozetka.steps.UserSearchPaneSteps;
-import com.rozetka.steps.UserSearchResultPageSteps;
+import com.rozetka.thucydides.steps.UserCartSteps;
+import com.rozetka.thucydides.steps.UserMainPageSteps;
+import com.rozetka.thucydides.steps.UserProductDetailsPageSteps;
+import com.rozetka.thucydides.steps.UserSearchFilterPaneSteps;
+import com.rozetka.thucydides.steps.UserSearchPaneSteps;
+import com.rozetka.thucydides.steps.UserSearchResultPageSteps;
 
 public class ThePerformPurchasingSteps {
 

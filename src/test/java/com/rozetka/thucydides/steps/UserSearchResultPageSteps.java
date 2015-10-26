@@ -1,12 +1,11 @@
-package com.rozetka.steps;
+package com.rozetka.thucydides.steps;
 
 import com.rozetka.pages.SearchResultPage;
-import com.rozetka.steps.Variables.Variables;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static com.rozetka.steps.Variables.Variables.getVariables;
+import static com.rozetka.thucydides.steps.Variables.Variables.getVariables;
 
 import com.rozetka.pages.SearchResultPage;
 

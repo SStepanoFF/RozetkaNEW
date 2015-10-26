@@ -1,4 +1,4 @@
-package com.rozetka.steps;
+package com.rozetka.thucydides.steps;
 
 import com.rozetka.modules.Cart;
 import com.rozetka.modules.SigninModule;

@@ -1,14 +1,13 @@
-package com.rozetka.steps;
+package com.rozetka.thucydides.steps;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.rozetka.modules.Cart;
-import com.rozetka.steps.Variables.Variables;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static com.rozetka.steps.Variables.Variables.getVariables;
+import static com.rozetka.thucydides.steps.Variables.Variables.getVariables;
 
 public class UserCartSteps extends ScenarioSteps {
 	

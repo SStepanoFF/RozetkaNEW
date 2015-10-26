@@ -1,14 +1,13 @@
-package com.rozetka.steps;
+package com.rozetka.thucydides.steps;
 
 import com.rozetka.pages.MainPage;
 import com.rozetka.pages.ProductDetailsPage;
 import com.rozetka.panels.SearchPane;
-import com.rozetka.steps.Variables.Variables;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static com.rozetka.steps.Variables.Variables.getVariables;
+import static com.rozetka.thucydides.steps.Variables.Variables.getVariables;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserSearchPaneSteps extends ScenarioSteps{

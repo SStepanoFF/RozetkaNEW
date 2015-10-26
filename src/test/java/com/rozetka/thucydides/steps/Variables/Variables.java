@@ -1,4 +1,4 @@
-package com.rozetka.steps.Variables;
+package com.rozetka.thucydides.steps.Variables;
 
 public class Variables {
 	private static Variables instance;

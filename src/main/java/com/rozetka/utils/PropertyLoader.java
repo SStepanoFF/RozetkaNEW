@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.Properties;
 
 public class PropertyLoader {
-    static final String PROP_PATH =System.getProperty("user.dir")+"\\src\\test\\resources\\Rozetka.properties";
+    static final String PROP_PATH =System.getProperty("user.dir")+"\\src\\main\\resources\\properties\\Rozetka.properties";
     static final String USER_PROP_PATH=System.getProperty("user.home")+"RozetkaUser.properties";
     
     public static final String loadProperty(String name) {

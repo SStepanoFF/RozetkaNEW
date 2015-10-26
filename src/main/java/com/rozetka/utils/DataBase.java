@@ -17,7 +17,7 @@ public class DataBase {
         ResultSet resultSets=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");//Driver registration
-            conn = DriverManager.getConnection("jdbc:mysql:"+PropertyLoader.loadUserProperty("dbLocation"),
+            conn = DriverManager.getConnection("jdbc:mysql:"+dbLocation,
                     dbLogin, dbPass);//Set connection to the database
             statement = conn.createStatement();//Request preparation
             resultSets = statement.executeQuery(query);

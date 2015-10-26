@@ -7,7 +7,8 @@ import com.rozetka.panels.SearchPane;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static com.rozetka.thucydides.steps.Variables.Variables.getVariables;
+import static com.rozetka.thucydides.steps.Variables.Variables.getValue;
+import static com.rozetka.thucydides.steps.Variables.Variables.putValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class UserSearchPaneSteps extends ScenarioSteps{
@@ -20,8 +21,8 @@ public class UserSearchPaneSteps extends ScenarioSteps{
 	
 	@Step
 	public void lookFor(String searchTerm, String additionalSearchCriteria){
-		getVariables().additionalSearchCriteria=additionalSearchCriteria;
-		getVariables().searchTerm=searchTerm;
+		putValue("additionalSearchCriteria", additionalSearchCriteria);
+		putValue("searchTerm", searchTerm);
 		mainPage.enterInToSearchBox(searchTerm+" "+additionalSearchCriteria);
 		mainPage.clickSearch();
 	}

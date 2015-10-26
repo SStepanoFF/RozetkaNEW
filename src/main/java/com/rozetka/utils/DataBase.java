@@ -15,10 +15,10 @@ public class DataBase {
         Statement statement = null;
         ResultSet resultSets=null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");//Регистрируем драйвер
+            Class.forName("com.mysql.jdbc.Driver");//Driver registration
             conn = DriverManager.getConnection("jdbc:mysql://mysql-kstest2.t1.tenet:3306/sutter_health",
-                    dbLogin, dbPass);//Установка соединения с БД
-            statement = conn.createStatement();//Готовим запрос
+                    dbLogin, dbPass);//Set connection to the database
+            statement = conn.createStatement();//Request preparation
             resultSets = statement.executeQuery(query);
             while (resultSets.next()) {
                 if (query.toLowerCase().contains("date")) {

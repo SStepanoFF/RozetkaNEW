@@ -49,6 +49,22 @@ public abstract class AbstractContainer extends PageObject{
 //        }
     }
 	
+//	public WebDriver driverInstance;
+//	
+//	@Override
+//	public void setDriver(WebDriver driver, long timeout){
+//		super.setDriver(driver,  timeout);
+//		this.driverInstance=driver;
+//	}
+//	
+//	@Override
+//	public WebDriver getDriver() {
+//        if (driverInstance==null){
+//        	return super.getDriver();
+//        }
+//		return driverInstance;
+//    }
+	
 //	@Override
 //	 public void setDriver(WebDriver driver) {
 //        setDriver(RWebDriver.getInstance().getWebDriver(), getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));

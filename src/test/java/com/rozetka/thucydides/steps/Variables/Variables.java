@@ -36,5 +36,9 @@ public class Variables {
 	public static boolean isKeyPresent(String key){
 		return getVariables().keyValue.containsKey(key);
 	}
+	
+	public void remove(String key){
+		getVariables().keyValue.remove(key);
+	}
 
 }

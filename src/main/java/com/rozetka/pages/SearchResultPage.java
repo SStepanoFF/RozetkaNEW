@@ -16,14 +16,7 @@ public class SearchResultPage extends SearchFilterPane {
 
 	//Locators
 	private final By purchaseBtn = By.cssSelector("button.btn-link-i[name=topurchases]");
-	
 	private final String purchaseItemBtn="//preceding::div[@class='g-i-list-middle-part']/preceding::div[@class='g-tools-container']/div[@class='g-buy']/div/form/span/button";
-	
-	///
-	//Locators
-		
-	//Item locators. Should be used under the appropriate item container
-	//private final By buyItemButton = By.cssSelector("div.g-buy>div.toOrder>form>span>button.btn-link-i");
 	private final By buyItemButton = By.cssSelector("button.btn-link-i");
 	private final By itemLink = By.cssSelector("div.g-i-list-title>a");
 
@@ -32,8 +25,6 @@ public class SearchResultPage extends SearchFilterPane {
 	private final By outOfStockItemContainerLocator = By.cssSelector("div.g-i-list.unavailable[data-location=searchResults]");
 	private final By limitedItemContainerLocator = By.cssSelector("div.g-i-list.limited[data-location=searchResults]");
 	private final By archiveItemContainerLocator = By.cssSelector("div.g-i-list.archive[data-location=searchResults]");
-	//private final By rightPartContainer = By.cssSelector("div.g-i-list-right-part")
-	//private final By toolsContainter = By.cssSelector("div.g-tools-container]");
 
 		
 	public void buyItem(String itemName, String additionalSearchCriteria){
@@ -116,10 +107,6 @@ public class SearchResultPage extends SearchFilterPane {
 	}
 
 		
-//	private WebElementFacade getItemContainer(String itemName){
-//		return getItemContainer(itemName, "available", null);
-//	}
-		
 	//It accepts only 'available', 'unavailable', 'limited', 'archive' 
 	private WebElementFacade getItemContainer(String itemName, String exists, String additionSearchCriteria){
 			
@@ -156,7 +143,6 @@ public class SearchResultPage extends SearchFilterPane {
 	///
 	public void goToItemPage(String itemName, String additionalSearchCriteria){
 		clickWebElement(findElementAtListByParametr(itemName, additionalSearchCriteria));
-		//clickElementBy(By.xpath("//a[contains(text(),\'"+itemName+"\']"));
 	}
 	
 	@Deprecated

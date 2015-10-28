@@ -180,7 +180,6 @@ public class FileOperations {
 	
 	private static void writeToWordX(String fileLocation, String fileName, String newText){
 //		XWPFDocument document=null;
-		
 		File file=getFile(fileLocation, fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");

@@ -14,6 +14,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,7 +31,7 @@ import net.thucydides.core.webdriver.javascript.JavascriptExecutorFacade;
 
 public abstract class AbstractContainer extends PageObject{
 	
-	//protected static WebDriver driver = RWebDriver.getInstance().getWebDriver();
+//	protected static WebDriver driver = WebDriverFactory.getDriver(DesiredCapabilities.firefox());
     //protected WebDriverWait wait=new WebDriverWait(driver,30);
 	
 
@@ -67,7 +68,7 @@ public abstract class AbstractContainer extends PageObject{
 	
 //	@Override
 //	 public void setDriver(WebDriver driver) {
-//        setDriver(RWebDriver.getInstance().getWebDriver(), getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
+//        setDriver(WebDriverFactory.getDriver(DesiredCapabilities.firefox()), getImplicitWaitTimeout().in(TimeUnit.MILLISECONDS));
 //    }
 	
 //	private boolean pageIsLoaded() {

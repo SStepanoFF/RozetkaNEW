@@ -1,10 +1,9 @@
-Login/Logout story
 
 Narrative:
 In order to rozetka functionality
 As a user
 I want to login and logout to the site
-					 
+
 Scenario: Loging into store
 Given the user opens rozetka
 Given the user opens login page

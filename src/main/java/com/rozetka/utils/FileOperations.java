@@ -200,13 +200,6 @@ public class FileOperations {
 				e.printStackTrace();
 				throw new RuntimeException("Can't write to WordX file");
 			}
-//			finally {
-//				try {
-//					document.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
 		}
 	}
 

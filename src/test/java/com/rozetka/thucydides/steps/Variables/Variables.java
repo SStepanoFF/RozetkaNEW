@@ -1,8 +1,10 @@
 package com.rozetka.thucydides.steps.Variables;
 
+
+
 import java.util.HashMap;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Map;
+
 
 public class Variables {
 	private static Variables instance;

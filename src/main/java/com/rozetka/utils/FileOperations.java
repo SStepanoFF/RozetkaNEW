@@ -179,8 +179,8 @@ public class FileOperations {
 	}
 	
 	private static void writeToWordX(String fileLocation, String fileName, String newText){
-//		XWPFDocument document=null;
-
+//		XWPFDocument document=null;	
+		
 		File file=getFile(fileLocation, fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");
@@ -191,8 +191,8 @@ public class FileOperations {
 //					XWPFRun run = para.createRun();
 //					run.getText(0);
 //					run.setText("\t\n\r"+newText);
-//					document.write(new FileOutputStream(file,true));
-
+//					document. write(new FileOutputStream(file,true));
+				
 				WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(file);
 				wordMLPackage.getMainDocumentPart().addParagraphOfText(newText);
 				wordMLPackage.save(file);
@@ -200,13 +200,6 @@ public class FileOperations {
 				e.printStackTrace();
 				throw new RuntimeException("Can't write to WordX file");
 			}
-//			finally {
-//				try {
-//					document.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
 		}
 	}
 

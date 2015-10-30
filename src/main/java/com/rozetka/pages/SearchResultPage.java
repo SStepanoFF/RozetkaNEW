@@ -12,6 +12,7 @@ import com.rozetka.panels.SearchPane;
 import com.rozetka.utils.AbstractContainer;
 
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.WebElement;
 import sun.security.x509.AVA;
 
 public class SearchResultPage extends SearchFilterPane {
@@ -27,6 +28,7 @@ public class SearchResultPage extends SearchFilterPane {
 	private final By outOfStockItemContainerLocator = By.cssSelector("div.g-i-list.unavailable[data-location=searchResults]");
 	private final By limitedItemContainerLocator = By.cssSelector("div.g-i-list.limited[data-location=searchResults]");
 	private final By archiveItemContainerLocator = By.cssSelector("div.g-i-list.archive[data-location=searchResults]");
+	private final By allItemsContainer = By.cssSelector("div.g-i-list[data-location=searchResults]");
 
 	@Deprecated
 //	public void buyItem(String itemName, String additionalSearchCriteria){
@@ -196,6 +198,22 @@ public class SearchResultPage extends SearchFilterPane {
 	///
 	@Deprecated
 	public void goToItemPage(String itemName, String additionalSearchCriteria){
+		List<Item> allItemsOnPage;
+		if(getAllItems().size()!=0){
+			allItemsOnPage=getAllItems();
+			for(Item item:allItemsOnPage){
+				if(item.getItemName().toLowerCase().contains(itemName.toLowerCase())){
+					if(additionalSearchCriteria!=null){
+						if (item.getItemName().toLowerCase().contains(itemName.toLowerCase())){
+							item.clickOnItemName();
+							break;
+						}
+					}
+					item.clickOnItemName();
+					break;
+				}
+			}
+		}
 		//clickWebElement(findElementAtListByParametr(itemName, additionalSearchCriteria));
 
 
@@ -253,6 +271,10 @@ public class SearchResultPage extends SearchFilterPane {
 	public List<Item> getAllArchivedItems(){
 
 		return getItems(archiveItemContainerLocator);
+	}
+
+	public List<Item> getAllItems(){
+		return getItems(allItemsContainer);
 	}
 
 

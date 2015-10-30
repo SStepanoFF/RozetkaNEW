@@ -35,8 +35,8 @@ public class FileOperations {
 	
 	//http://developeriq.in/articles/2012/jul/03/handling-ms-word-documents-using-apache-poi/
 	
-	private static File getFile(String fileLocation, String fileName){
-		File file = new File(fileLocation);  //folder location
+	private static File getFile(String fileFolder, String fileName){
+		File file = new File(fileFolder);  //folder location
         File [] files = file.listFiles();
         File workFile=null;
         List<File> fileList= new ArrayList<File>();

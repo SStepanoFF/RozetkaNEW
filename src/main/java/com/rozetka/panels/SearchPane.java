@@ -44,6 +44,7 @@ public class SearchPane extends AbstractContainer {
 	}
 	
 	public void logoutProfile(){
+		waitForElementBy(logoutBtn);
 		clickElementBy(logoutBtn);
 	}
 	

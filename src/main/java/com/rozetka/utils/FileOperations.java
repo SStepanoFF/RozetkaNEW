@@ -1,6 +1,5 @@
 package com.rozetka.utils;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,34 +7,25 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
 
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.docx4j.Docx4jProperties;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
-import org.slf4j.LoggerFactory;
 
 
 public class FileOperations {
-	
+
+	//Example:  System.out.println(FileOperations.readFromFile("//10.17.11.109/Share/", "test.docx"));
 	//http://developeriq.in/articles/2012/jul/03/handling-ms-word-documents-using-apache-poi/
-	
-	private static File getFile(String fileFolder, String fileName){
+
+	private static String fileFolder=PropertyLoader.loadProperty("docsFolder");
+
+	private static File getFile(String fileName){
 		File file = new File(fileFolder);  //folder location
         File [] files = file.listFiles();
         File workFile=null;
@@ -49,19 +39,19 @@ public class FileOperations {
         return workFile;
 	}
 	
-	public static String readFromFile(String fileLocation, String fileName){
+	public static String readFromFile(String fileName){
 		if (fileName.contains(".txt")){
-			return readTXTFile(fileLocation, fileName);
+			return readTXTFile(fileName);
 		}
 		if (fileName.contains(".docx")){
-			return readWordX(fileLocation, fileName);
+			return readWordX(fileName);
 		}else {
 			throw new RuntimeException("Unknown file format");
 		}
 	}
 	
-	private static String readTXTFile(String fileLocation, String fileName){
-		File file=getFile(fileLocation, fileName);
+	private static String readTXTFile(String fileName){
+		File file=getFile(fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");
 		}else{
@@ -93,15 +83,15 @@ public class FileOperations {
 		}
 	}
 	
-	private static String readWordX(String fileLocation, String fileName){
+	private static String readWordX(String fileName){
 		XWPFWordExtractor wordExtractor=null;
-		File file=getFile(fileLocation, fileName);
+		File file=getFile(fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");
 		}else{
 		try
 		{
-			XWPFDocument docx = new XWPFDocument(new FileInputStream(getFile(fileLocation, fileName)));			
+			XWPFDocument docx = new XWPFDocument(new FileInputStream(getFile(fileName)));
 			wordExtractor = new XWPFWordExtractor(docx);
 			return wordExtractor.getText();
          }catch(Exception e) {
@@ -141,7 +131,7 @@ public class FileOperations {
          }
 	
 	
-	//Example:  System.out.println(FileOperations.readFromFile("//10.17.11.109/Share/", "test.docx"));
+
 	
 	public static void writeToFile(String fileLocation, String fileName, String newText){
 		if (fileName.contains(".txt")){
@@ -156,7 +146,7 @@ public class FileOperations {
 	}
 	
 	private static void writeToTXT(String fileLocation, String fileName, String newText){
-		File file=getFile(fileLocation, fileName);
+		File file=getFile(fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");
 		}else{
@@ -181,7 +171,7 @@ public class FileOperations {
 	private static void writeToWordX(String fileLocation, String fileName, String newText){
 //		XWPFDocument document=null;	
 		
-		File file=getFile(fileLocation, fileName);
+		File file=getFile(fileName);
 		if (file==null){
 			throw new RuntimeException("File was not found");
 		}else{

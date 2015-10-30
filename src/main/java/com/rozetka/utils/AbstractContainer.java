@@ -158,7 +158,7 @@ public abstract class AbstractContainer extends PageObject{
 	
 	protected void clickWebElement(WebElementFacade element) {
         element.click();
-        closeAlert();
+        //closeAlert();
 	}
 	
 	protected WebElementFacade getParent(By by) {

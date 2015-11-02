@@ -47,7 +47,8 @@ public class EndUserSteps extends ScenarioSteps {
 	public void verifyThatProfileLinkPresent(){
 		assertThat("The profile link is not present", searchPane.isProfileLinkPresent());
 	}
-	
+
+	@Deprecated
 	@Step
 	public void purchaseItem(){
 		searchResultPage.purchaseItem(this.searchTerm);

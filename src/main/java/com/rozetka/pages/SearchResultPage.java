@@ -30,25 +30,7 @@ public class SearchResultPage extends SearchFilterPane {
 	private final By archiveItemContainerLocator = By.cssSelector("div.g-i-list.archive[data-location=searchResults]");
 	private final By allItemsContainer = By.cssSelector("div.g-i-list[data-location=searchResults]");
 
-	@Deprecated
-//	public void buyItem(String itemName, String additionalSearchCriteria){
-//		String additional=null;
-//		if(additionalSearchCriteria!=null){
-//			additional=additionalSearchCriteria;
-//		}
-//		WebElementFacade itemContainer;
-//		if(isItemAvailable(itemName, additional)){
-//			itemContainer = getItemContainer(itemName,"available",additional);
-//			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
-//		} else if(isItemLimited(itemName, additional)){
-//			itemContainer = getItemContainer(itemName, "limited", additional);
-//			clickWebElement(getChildOfElementFacade(itemContainer, buyItemButton));
-//		} else if(isItemArchieved(itemName, additional)){
-//			assertThat("The following item: "+itemName+" is archived", false);
-//		} else if(isItemUnavailable(itemName, additional)){
-//			assertThat("The following item: "+itemName+" is out of stock", false);
-//		}
-//	}
+
 	public void buyItem(String itemName){
 		buyItem(itemName, null);
 	}
@@ -196,7 +178,6 @@ public class SearchResultPage extends SearchFilterPane {
 //	}
 	
 	///
-	@Deprecated
 	public void goToItemPage(String itemName, String additionalSearchCriteria){
 		List<Item> allItemsOnPage;
 		if(getAllItems().size()!=0){
@@ -225,6 +206,7 @@ public class SearchResultPage extends SearchFilterPane {
 	}
 	
 
+	@Deprecated
 	private WebElementFacade findElementAtListByParametr(String... parametr){
 		boolean find=true;
 		List<WebElementFacade> elements = getAllElementsBy(By.xpath("//div[@class=\'g-i-list-title\']/a"));

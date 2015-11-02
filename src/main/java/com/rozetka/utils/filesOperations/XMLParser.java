@@ -1,5 +1,6 @@
-package com.rozetka.utils;
+package com.rozetka.utils.filesOperations;
 
+import com.rozetka.utils.PropertyLoader;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -11,12 +12,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Attributes;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -29,7 +28,7 @@ public class XMLParser {
 //            System.out.println(XMLParser.getTagTextSAX("groupId"));
 
     private static List<Element> resultElementstListJDOM =new ArrayList<Element>();
-    private static String xmlDocPath=PropertyLoader.loadProperty("xmlDocPath");
+    private static String xmlDocPath= PropertyLoader.loadProperty("xmlDocPath");
 
     public static List<String> getTagTextSAX(String tagName){
         SAXParserFactory factory = SAXParserFactory.newInstance();

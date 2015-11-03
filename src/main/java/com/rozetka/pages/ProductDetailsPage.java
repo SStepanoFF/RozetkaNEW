@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 
 import com.rozetka.panels.SearchPane;
 
-import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
 @DefaultUrl("http://rozetka.com.ua/apple_macbook_air_zorj000n9/p2541567/")
@@ -28,7 +27,7 @@ public class ProductDetailsPage extends SearchPane {
 	private final By addToWishlistBtn=By.xpath("//div[@name='wishlists']/a");
 	private final By saveToWishlist= By.xpath("//div[@class='wishlists-i']//button");
 	private final By closePopupMess= By.cssSelector("a[class='popup-close']");
-	private final By popudWishAdded= By.cssSelector("h2[class='wishlists-title']");
+	private final By popupWishAdded = By.cssSelector("h2[class='wishlists-title']");
 	private final By wishCount= By.xpath("//div[@id='wishlist']//span[@class='hub-i-count']");
 	
 	public void openProdDetailsPage(String url){
@@ -92,13 +91,13 @@ public class ProductDetailsPage extends SearchPane {
 	public void addToWishlist(){
 		clickElementBy(addToWishlistBtn);
 		clickElementBy(saveToWishlist);
-		waitForElementBy(popudWishAdded);
+		waitForElementBy(popupWishAdded);
 	}
 	
 	public boolean isProductAddedToWishlist(){
 		boolean added=true;
-		if (containsElementBy(popudWishAdded)){
-			if (!getElementBy(popudWishAdded).getText().toLowerCase().contains("добавлен")){
+		if (containsElementBy(popupWishAdded)){
+			if (!getElementBy(popupWishAdded).getText().toLowerCase().contains("добавлен")){
 				added=false;
 			}
 			clickElementBy(closePopupMess);

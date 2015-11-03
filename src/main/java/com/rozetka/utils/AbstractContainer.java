@@ -39,16 +39,16 @@ public abstract class AbstractContainer extends PageObject{
    // public abstract By getUniqueElement();
     
     
-	@Override
-	public void addJQuerySupport() {
-//        if (pageIsLoaded()) {
-//            JQueryEnabledPage jQueryEnabledPage = JQueryEnabledPage.withDriver(getDriver());
-//            if (jQueryEnabledPage.isJQueryIntegrationEnabled() && !jQueryEnabledPage.isJQueryAvailable()) {
-////                jQueryEnabledPage.injectJQuery();
-//                jQueryEnabledPage.injectJQueryPlugins();
-//            }
-//        }
-    }
+//	@Override
+//	public void addJQuerySupport() {
+////        if (pageIsLoaded()) {
+////            JQueryEnabledPage jQueryEnabledPage = JQueryEnabledPage.withDriver(getDriver());
+////            if (jQueryEnabledPage.isJQueryIntegrationEnabled() && !jQueryEnabledPage.isJQueryAvailable()) {
+//////                jQueryEnabledPage.injectJQuery();
+////                jQueryEnabledPage.injectJQueryPlugins();
+////            }
+////        }
+//    }
 	
 //	public WebDriver driverInstance;
 //	
@@ -80,30 +80,7 @@ public abstract class AbstractContainer extends PageObject{
 //    }
 //	
 //	
-//	public void injectJQuery() {
-//        executeScriptFrom("jquery/jquery.min.js");
-//        executeScriptFrom("jquery/jquery.focus.test-fix.js");
-//    }
-//	
-//	protected void executeScriptFrom(String scriptSource) {
-//		WebDriver driver=getDriver();
-//        if (javascriptIsSupportedIn(driver)) {
-//            String script = getFileAsString(scriptSource);
-//            JavascriptExecutorFacade js = new JavascriptExecutorFacade(driver);
-//            js.executeScript(script);
-//        }
-//    }
-//	
-//	 private String getFileAsString(final String resourcePath) {
-//	        String content = "";
-//	        try {
-//	            URL fileUrl = getClass().getClassLoader().getResource(resourcePath);
-//	            content = Resources.toString(fileUrl, Charsets.UTF_8);
-//	        } catch (Exception e) {
-//	            throw new RuntimeException(e);
-//	        }
-//	        return content;
-//	    }
+
 	
 	protected void navigateToUrl(String url){
     	getDriver().navigate().to(url);

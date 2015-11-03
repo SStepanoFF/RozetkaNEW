@@ -1,6 +1,9 @@
 package com.rozetka.panels;
 
 
+import com.rozetka.pages.WishlistPage;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import com.rozetka.utils.AbstractContainer;
 
@@ -17,6 +20,7 @@ public class SearchPane extends AbstractContainer {
 	private final By profileLink = By.cssSelector("a[name=profile]");
 	private final By logoutBtn =By.cssSelector("a[name='signout']");
 	private final By wishListBtn=By.xpath("//div[@id='wishlist']//a");
+	private final By uniqElementWishlistPage=By.cssSelector("h1.float-lt");
 	
 	
 	public void enterInToSearchBox(String searchItem){
@@ -53,8 +57,14 @@ public class SearchPane extends AbstractContainer {
 	}
 	
 	public void openWishlist() {
+//		waitForElementBy(wishListBtn);
 		clickElementBy(wishListBtn);
-		
-		getDriver().navigate().to("https://my.rozetka.com.ua/profile/wishlists/");
+		int k=0;
+		while (!isElementVisible(uniqElementWishlistPage)){
+			clickElementBy(wishListBtn);
+			k++;
+		}
+		System.out.println("Count: "+k);
+//		getDriver().navigate().to("https://my.rozetka.com.ua/profile/wishlists/");
 	}
 }

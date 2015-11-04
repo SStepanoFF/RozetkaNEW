@@ -21,7 +21,7 @@ public class UserProductDetailsPageSteps extends ScenarioSteps {
 	@Step
 	public void openProductDetailsPage(String url){
 		productDetailsPage.openProdDetailsPage(url);
-		putValue("prodTitle",productDetailsPage.getProductTitle());
+		putValue("prodTitle",productDetailsPage.getProductName());
 	}
 	
 	@Step

@@ -8,7 +8,8 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("http://rozetka.com.ua/apple_macbook_air_zorj000n9/p2541567/")
 public class ProductDetailsPage extends SearchPane {
 	
-	private final By productTitle=By.className("detail-tabs-i-title-inner");
+	private final By productName =By.className("detail-tabs-i-title-inner");
+	private final By productTitle=By.className("detail-title");
 	private final By purchasesButon = By.cssSelector("button.btn-link-i[name=topurchases]");
 	
 	private final By shortCommentTabBtn=By.xpath("//ul[@class='clearfix']//li[2]/a");
@@ -38,8 +39,8 @@ public class ProductDetailsPage extends SearchPane {
 		clickElementBy(purchasesButon);
 	}
 	
-	public String getProductTitle(){
-		return getElementBy(productTitle).getText().toLowerCase();
+	public String getProductName(){
+		return getElementBy(productName).getText().toLowerCase();
 	}
 	
 	public boolean isProductHaveParametrs(String... parameters){
@@ -79,7 +80,6 @@ public class ProductDetailsPage extends SearchPane {
 //			}
 //		}
 //		return added;
-		
 		return containsElementBy(commentVerifyMessage) && getElementBy(commentVerifyMessage).isEnabled();
 	}
 	
@@ -114,6 +114,6 @@ public class ProductDetailsPage extends SearchPane {
 	}
 	
 	public boolean onPage(){
-		return isElementVisible(getElementBy(productTitle));
+		return isElementVisible(getElementBy(productName));
 	}
 }

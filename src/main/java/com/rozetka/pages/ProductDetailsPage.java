@@ -1,7 +1,6 @@
 package com.rozetka.pages;
 
 import org.openqa.selenium.By;
-
 import com.rozetka.panels.SearchPane;
 
 import net.thucydides.core.annotations.DefaultUrl;
@@ -9,7 +8,7 @@ import net.thucydides.core.annotations.DefaultUrl;
 @DefaultUrl("http://rozetka.com.ua/apple_macbook_air_zorj000n9/p2541567/")
 public class ProductDetailsPage extends SearchPane {
 	
-	private final By productTitle=By.cssSelector("h1[class='detail-title']");
+	private final By productTitle=By.className("detail-tabs-i-title-inner");
 	private final By purchasesButon = By.cssSelector("button.btn-link-i[name=topurchases]");
 	
 	private final By shortCommentTabBtn=By.xpath("//ul[@class='clearfix']//li[2]/a");

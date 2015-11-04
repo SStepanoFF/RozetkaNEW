@@ -1,7 +1,7 @@
 package com.rozetka.thucydides.steps;
 
 import com.rozetka.pages.ProductDetailsPage;
-
+import static com.rozetka.thucydides.steps.Variables.Variables.putValue;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,6 +21,7 @@ public class UserProductDetailsPageSteps extends ScenarioSteps {
 	@Step
 	public void openProductDetailsPage(String url){
 		productDetailsPage.openProdDetailsPage(url);
+		putValue("prodTitle",productDetailsPage.getProductTitle());
 	}
 	
 	@Step

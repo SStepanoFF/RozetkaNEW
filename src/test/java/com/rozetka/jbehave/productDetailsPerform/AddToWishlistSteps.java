@@ -11,7 +11,7 @@ import com.rozetka.thucydides.steps.UserLoginLogoutModuleSteps;
 import com.rozetka.thucydides.steps.UserProductDetailsPageSteps;
 import com.rozetka.thucydides.steps.UserSearchPaneSteps;
 import com.rozetka.thucydides.steps.UserWishlistSteps;
-
+import static com.rozetka.thucydides.steps.Variables.Variables.getValue;
 import net.thucydides.core.annotations.Steps;
 
 public class AddToWishlistSteps {
@@ -70,5 +70,17 @@ public class AddToWishlistSteps {
 			 userWishlistSteps.clearWishlist();
 		}
 		userSearchPaneSteps.verifyIsWishlistEmpty();
+	}
+
+	@Then ("product is added to wishlist page")
+	public void thenProductIsAddedToWishlistPage(){
+		userSearchPaneSteps.openWishlistPage();
+		assertThat(getValue("prodTitle")+" was not added", userWishlistSteps.isWishPresent(getValue("prodTitle")));
+	}
+
+	@Then ("delete added item from wishlist")
+	public void thenDeleteAddedItemFromWishlist(){
+		userWishlistSteps.deleteSindleWish(getValue("prodTitle"));
+		assertThat(getValue("prodTitle")+" is not deleted", !userWishlistSteps.isWishPresent(getValue("prodTitle")));
 	}
 }

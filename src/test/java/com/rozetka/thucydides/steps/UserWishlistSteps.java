@@ -19,5 +19,15 @@ public class UserWishlistSteps extends ScenarioSteps{
 	public void verifyIsWishlistEmpty(){
 		assertThat("Wishlist is not empty", wishPage.isWishlistEmpty());
 	}
+
+	@Step
+	public void deleteSindleWish(String wishName){
+		wishPage.deleteWishByName(wishName);
+	}
+
+	@Step
+	public boolean isWishPresent(String wishName){
+		return wishPage.isWishPresent(wishName);
+	}
 	
 }

@@ -105,6 +105,7 @@ public class ProductDetailsPage extends SearchPane {
 			added=false;
 		}
 		return added;
+
 	}
 	
 	public boolean isWishListEmpty(){

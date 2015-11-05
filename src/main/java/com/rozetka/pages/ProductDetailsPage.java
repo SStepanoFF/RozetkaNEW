@@ -111,7 +111,6 @@ public class ProductDetailsPage extends SearchPane {
 		if (containsElementBy(wishCount)){
 			return false;
 		}else return true;
-
 	}
 	
 	public boolean onPage(){

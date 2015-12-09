@@ -81,6 +81,7 @@ public class ProductDetailsPage extends SearchPane {
 //		}
 //		return added;
 		return containsElementBy(commentVerifyMessage) && getElementBy(commentVerifyMessage).isEnabled();
+
 	}
 	
 	public boolean isWishlistBtnAvailable(){

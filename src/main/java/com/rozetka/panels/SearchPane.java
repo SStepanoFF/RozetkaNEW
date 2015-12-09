@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import com.rozetka.utils.AbstractContainer;
 
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.JavascriptExecutor;
 
 @DefaultUrl("https://my.rozetka.com.ua/profile/wishlists/")
 public class SearchPane extends AbstractContainer {
@@ -57,14 +58,13 @@ public class SearchPane extends AbstractContainer {
 	}
 	
 	public void openWishlist() {
-//		waitForElementBy(wishListBtn);
-		clickElementBy(wishListBtn);
-		int k=0;
-		while (!isElementVisible(uniqElementWishlistPage)){
-			clickElementBy(wishListBtn);
-			k++;
-		}
-		System.out.println("Count: "+k);
-//		getDriver().navigate().to("https://my.rozetka.com.ua/profile/wishlists/");
+		((JavascriptExecutor)getDriver()).executeScript("arguments[0].click();",getElementBy(wishListBtn));
+//		clickElementBy(wishListBtn);
+//		int k=0;
+//		while (!isElementVisible(uniqElementWishlistPage)){
+//			clickElementBy(wishListBtn);
+//			k++;
+//		}
+//		System.out.println("Count: "+k);
 	}
 }
